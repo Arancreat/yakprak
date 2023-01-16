@@ -8,7 +8,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.yakprak.backend.models.Role;
 import ru.yakprak.backend.models.User;
-import ru.yakprak.backend.repo.UserRepo;
+import ru.yakprak.backend.repos.UserRepo;
 import ru.yakprak.backend.requests.signInRequest;
 import ru.yakprak.backend.requests.signUpRequest;
 import ru.yakprak.backend.responses.AuthResponse;

@@ -1,4 +1,4 @@
-package ru.yakprak.backend.repo;
+package ru.yakprak.backend.repos;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import ru.yakprak.backend.models.User;
