@@ -6,5 +6,5 @@ import ru.yakprak.backend.models.User;
 import java.util.Optional;
 
 public interface UserRepo extends JpaRepository<User, Integer> {
-    Optional<User> findByUsername(String username);
+    Optional<User> findByEmail(String email);
 }

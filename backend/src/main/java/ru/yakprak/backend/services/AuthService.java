@@ -8,6 +8,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.yakprak.backend.models.Role;
 import ru.yakprak.backend.models.User;
+import ru.yakprak.backend.models.UserInfo;
 import ru.yakprak.backend.repos.UserRepo;
 import ru.yakprak.backend.requests.signInRequest;
 import ru.yakprak.backend.requests.signUpRequest;
@@ -23,13 +24,10 @@ public class AuthService {
 
     public AuthResponse signUp(signUpRequest request) {
         var user = User.builder()
-                .username(request.getUsername())
-                .firstName(request.getFirstName())
-                .lastName(request.getLastName())
-                .patronymic(request.getPatronymic())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .role(Role.USER)
+                .userInfo(new UserInfo())
                 .build();
         userRepo.save(user);
         var jwt = jwtService.generateJwt(user);
@@ -41,11 +39,11 @@ public class AuthService {
     public AuthResponse signIn(signInRequest request) {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
-                        request.getUsername(),
+                        request.getEmail(),
                         request.getPassword()
                 )
         );
-        var user = userRepo.findByUsername(request.getUsername())
+        var user = userRepo.findByEmail(request.getEmail())
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
         var jwt = jwtService.generateJwt(user);
         return AuthResponse.builder()
