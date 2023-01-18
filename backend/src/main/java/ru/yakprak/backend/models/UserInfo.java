@@ -3,6 +3,7 @@ package ru.yakprak.backend.models;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import lombok.*;
 import org.hibernate.Hibernate;
 
@@ -25,6 +26,8 @@ public class UserInfo {
     private String patronymic;
     private String location;
     private LocalDate birthdate;
+    @OneToOne(mappedBy = "userInfo")
+    private User user;
 
     @Override
     public boolean equals(Object o) {

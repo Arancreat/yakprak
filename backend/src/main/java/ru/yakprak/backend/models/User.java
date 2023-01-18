@@ -28,8 +28,8 @@ public class User implements UserDetails {
     private String password;
     @Enumerated(EnumType.STRING)
     private Role role;
-    @OneToOne(cascade = {CascadeType.ALL})
-    @JoinColumn(name = "user_info_id")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_info_id", referencedColumnName = "id")
     private UserInfo userInfo;
 
     @Override
