@@ -1,0 +1,59 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+/** Navigation bar (Header) **/
+.nav_wrap {
+  background-color: #f1f1f1;
+  width: 100%
+}
+
+.nav {
+  display: flex;
+  width: 75%;
+  margin: 0 auto;
+  justify-content: space-between;
+  align-items: stretch;
+  font-size: 16px;
+  background-color: #f1f1f1;
+}
+
+.nav .site_title {
+  font-size: 24px;
+}
+
+.nav ul {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav a {
+  display: flex;
+  font-family: "Open Sans", sans-serif;
+  text-decoration: none;
+  height: 100%;
+  align-items: center;
+  padding: 8px;
+  color: #222;
+}
+
+.nav li:hover {
+  background-color: #e0e0e0;
+}
+
+/** Div container **/
+
+.container {
+  display: flex;
+  background-color: #f8f8f8;
+  width: 75%;
+  margin: 0 auto;
+  padding: 8px;
+  font-family: "Open Sans", sans-serif;
+}
