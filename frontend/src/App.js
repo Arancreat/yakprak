@@ -1,11 +1,11 @@
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import About from "./pages/About";
-import { SignIn } from "./pages/SignIn";
-import { SignUp } from "./pages/SignUp";
+import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
 import { Route, Routes } from "react-router-dom";
 
-function App() {
+const App = () => {
   return (
     <>
       <header>
@@ -21,6 +21,6 @@ function App() {
       </div>
     </>
   );
-}
+};
 
 export default App;
