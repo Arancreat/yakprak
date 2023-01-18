@@ -7,19 +7,25 @@ body {
 }
 
 /** Navigation bar (Header) **/
+
 .nav_wrap {
-  background-color: #f1f1f1;
-  width: 100%
+  display: flex;
+  position: relative;
+  box-shadow: 0px 4px 1px -1px rgba(0, 0, 0, 0.2);
+  height: 50px;
+  background-color: #fff;
+  width: 100%;
 }
 
 .nav {
   display: flex;
+  max-width: 1000px;
   width: 75%;
   margin: 0 auto;
   justify-content: space-between;
   align-items: stretch;
   font-size: 16px;
-  background-color: #f1f1f1;
+  background-color: inherit;
 }
 
 .nav .site_title {
@@ -47,13 +53,45 @@ body {
   background-color: #e0e0e0;
 }
 
-/** Div container **/
+/** Content container **/
 
 .container {
   display: flex;
+  flex-direction: column;
   background-color: #f8f8f8;
+  max-width: 1000px;
   width: 75%;
   margin: 0 auto;
-  padding: 8px;
+  padding: 16px;
+  margin-top: 50px;
   font-family: "Open Sans", sans-serif;
+}
+
+/** Auth form **/
+
+.auth_form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.auth_form input {
+  border: none;
+  border-bottom: 4px solid #e4e4e4;
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.auth_form button {
+  border: none;
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.sign_up_link {
+  padding-top: 16px;
+}
+
+.sign_up_link a {
+  text-decoration: none;
 }
