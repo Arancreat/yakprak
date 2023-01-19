@@ -1,14 +1,28 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Api from "../components/Api";
 
 const SignIn = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
     console.log(email);
     console.log(password);
+
+    const isAuth = await Api.postSignIn(email, password);
+
+    if (isAuth) {
+      console.log("I got token");
+      console.log(localStorage.getItem("token"));
+
+      navigate("/");
+    } else {
+      console.log("Error!!");
+    }
   };
 
   return (
