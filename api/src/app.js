@@ -1,10 +1,6 @@
 //import section
 import express from "express";
-import { createRequire } from "module";
-
-//require section
-const require = createRequire(import.meta.url);
-const logger = require("./utils/logger.cjs");
+import logger from "./utils/logger.js";
 
 // parameters
 const port = 4000;
