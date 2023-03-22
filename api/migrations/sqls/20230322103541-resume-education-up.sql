@@ -19,5 +19,5 @@ create table resume_education (
     faculty varchar(63) not null,
     speciality varchar(63) not null,
     graduation_year varchar(3) not null,
-    resume_id integer references resumes(id) on delete cascade
+    resume_id integer not null references resumes(id) on delete cascade
 );

@@ -14,5 +14,5 @@ create table resumes (
     languages varchar(32) [],
     created_at timestamp default current_timestamp,
     updated_at timestamp default current_timestamp,
-    user_id integer references users(id) on delete cascade
+    user_id integer not null references users(id) on delete cascade
 );
