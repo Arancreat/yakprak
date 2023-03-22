@@ -1,14 +1,9 @@
-import User from "./model.js";
 import ApiError from "../exception.js";
-import logger from "../../utils/logger.js";
+import user from "./model.js";
 
-const Controller = {
-    helloWorld: async (req, res) => {
-        res.status(200).json({ message: "Hello world!" });
-    },
-
+const controller = {
     getAll: async (req, res) => {
-        User.getAll()
+        user.getAll()
             .then((response) => {
                 res.status(200).json(response);
             })
@@ -20,7 +15,19 @@ const Controller = {
     },
     getById: async (req, res) => {
         const data = req.params;
-        User.getById(data)
+        user.getById(data)
+            .then((response) => {
+                res.status(200).json(response);
+            })
+            .catch((error) => {
+                if (error.status == undefined)
+                    error = ApiError.InternalServerError(error.message);
+                return res.status(error.status).json(error.data);
+            });
+    },
+    update: async (req, res) => {
+        const data = req.body;
+        user.update(data)
             .then((response) => {
                 res.status(200).json(response);
             })
@@ -32,4 +39,4 @@ const Controller = {
     },
 };
 
-export default Controller;
+export default controller;
