@@ -1,7 +1,8 @@
 import "./cfg.js";
-import logger from "./utils/logger.js";
-import chalk from 'chalk';
 import express from "express";
+import logger from "./utils/logger.js";
+import sendMail from "./utils/mailer.js";
+import chalk from "chalk";
 import userRoute from "./lib/user/route.js";
 import authRoute from "./lib/auth/route.js";
 

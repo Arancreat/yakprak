@@ -10,7 +10,9 @@ if (existsSync("./.env")) {
         DB_PORT=
         DB_NAME=
         DB_USER=
-        DB_PASS=`;
+        DB_PASS=
+        MAIL_USER=
+        MAIL_PASS=`;
     writeFileSync("./.env", dotenvFile.replace(/[\t ]+/g, ""), "utf8", (err) => {
         if (err) throw err;
     });
@@ -23,7 +25,9 @@ if (
     !process.env.DB_PORT ||
     !process.env.DB_NAME ||
     !process.env.DB_USER ||
-    !process.env.DB_PASS
+    !process.env.DB_PASS ||
+    !process.env.MAIL_USER ||
+    !process.env.MAIL_PASS
 ) {
     logger.fatal(`Variables at ".env" aren't configured!`);
     process.exit(0);
