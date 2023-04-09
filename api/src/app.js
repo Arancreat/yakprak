@@ -1,9 +1,9 @@
 import "./env.js"
+import "./cfg.js"
 import express from "express";
-import logger from "./utils/logger.js";
 import userRoute from "./lib/user/route.js";
 import authRoute from "./lib/auth/route.js";
-
+import logger from "./utils/logger.js";
 
 // parameters
 const PORT = 8080;
@@ -19,7 +19,7 @@ app.use("/api/user", userRoute);
 app.use("/api/auth", authRoute);
 
 try {
-    app.listen(PORT, () => logger.info(`Server started on PORT = ${PORT}`));
+    app.listen(PORT, () => logger.info(`Server ready at http://localhost:${PORT}`));
 } catch (error) {
     logger.fatal(error);
 }
