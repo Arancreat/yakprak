@@ -10,7 +10,7 @@ const user = {
             };
             pool.query(query, (error, results) => {
                 if (error) reject(error);
-                resolve(results.rows);
+                resolve(results?.rows);
             });
         });
     },
@@ -23,7 +23,7 @@ const user = {
             };
             pool.query(query, (error, results) => {
                 if (error) reject(error);
-                resolve(results.rows);
+                resolve(results?.rows);
             });
         });
     },
@@ -36,7 +36,7 @@ const user = {
             };
             pool.query(query, (error, results) => {
                 if (error) reject(error);
-                resolve(results.rows[0]);
+                resolve(results?.rows[0]);
             });
         });
     },

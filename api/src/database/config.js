@@ -1,11 +1,12 @@
 import pkg from "pg";
-
 const { Pool } = pkg;
 
-// TODO: import from .env file
-
 const pool = new Pool({
-    connectionString: "postgres://postgres:admin@localhost:5432/yakprak",
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    database: process.env.DB_NAME,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
 });
 
 export default pool;
