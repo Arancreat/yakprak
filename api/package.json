@@ -5,7 +5,7 @@
   "main": "./src/app.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon ./src/app.js --ignore database.json -r dotenv/config"
+    "dev": "nodemon -r dotenv/config ./src/app.js --ignore database.json "
   },
   "author": "Arancreat",
   "license": "ISC",

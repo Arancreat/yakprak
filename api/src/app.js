@@ -1,4 +1,3 @@
-import "./env.js"
 import "./cfg.js"
 import express from "express";
 import userRoute from "./lib/user/route.js";
