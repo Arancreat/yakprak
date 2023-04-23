@@ -19,7 +19,9 @@
     "nodemailer": "^6.9.1",
     "nodemon": "^2.0.22",
     "pg": "^8.10.0",
+    "pg-hstore": "^2.3.4",
     "pino": "^8.11.0",
-    "pino-pretty": "^10.0.0"
+    "pino-pretty": "^10.0.0",
+    "sequelize": "^6.31.0"
   }
 }
