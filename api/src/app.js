@@ -3,11 +3,15 @@ import express from "express";
 import logger from "./utils/logger.js";
 import sendMail from "./utils/mailer.js";
 import chalk from "chalk";
-import userRoute from "./lib/user/route.js";
-import authRoute from "./lib/auth/route.js";
+import traineeRoute from "./lib/trainee/route.js";
+import db from "./database/config.js";
 
 const loggerMiddleware = (req, res, next) => {
-    logger.info(`${chalk.red(req.method)} "${req.originalUrl}" from remote address: "${req.ip}"`);
+    logger.info(
+        `${chalk.red(req.method)} "${req.originalUrl}" from remote address: "${
+            req.ip
+        }"`
+    );
     next();
 };
 
@@ -22,8 +26,9 @@ app.use(express.json());
 app.use(loggerMiddleware);
 
 // routes
-app.use("/api/user", userRoute);
-app.use("/api/auth", authRoute);
+app.use("/api/trainee", traineeRoute);
+
+db.sync();
 
 try {
     app.listen(PORT, () =>

@@ -1,9 +1,10 @@
 import ApiError from "../exception.js";
-import user from "./model.js";
+import bcrypt from "bcrypt";
+import Trainee from "./model.js";
 
 const controller = {
     getAll: async (req, res) => {
-        user.getAll()
+        await Trainee.findAll()
             .then((response) => {
                 res.status(200).json(response);
             })
@@ -14,8 +15,8 @@ const controller = {
             });
     },
     getById: async (req, res) => {
-        const data = req.params;
-        user.getById(data)
+        const id = req.params.id;
+        await Trainee.findByPk(id)
             .then((response) => {
                 res.status(200).json(response);
             })
@@ -24,6 +25,36 @@ const controller = {
                     error = ApiError.InternalServerError(error.message);
                 return res.status(error.status).json(error.data);
             });
+    },
+    signup: async (req, res) => {
+        const data = req.body;
+        try {
+            const salt = await bcrypt.genSalt();
+            data.hashed_password = await bcrypt.hash(data.password, salt);
+
+            const newTrainee = await Trainee.create({
+                email: data.email,
+                hashed_password: data.hashed_password,
+            });
+
+            res.status(200).json(newTrainee);
+        } catch (error) {
+            if (error.status == undefined)
+                error = ApiError.InternalServerError(error.message);
+            return res.status(error.status).json(error.data);
+        }
+    },
+    login: async (req, res) => {
+        const data = req.body;
+        try {
+            console.log("User log in:");
+            console.log(data);
+            res.status(200).json(data);
+        } catch (error) {
+            if (error.status == undefined)
+                error = ApiError.InternalServerError(error.message);
+            return res.status(error.status).json(error.data);
+        }
     },
     update: async (req, res) => {
         const data = req.body;
