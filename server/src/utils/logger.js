@@ -1,6 +1,7 @@
 import pino from "pino";
+import chalk from "chalk";
 
-const logger = pino({
+export const logger = pino({
     transport: {
         targets: [
             {
@@ -22,5 +23,14 @@ const logger = pino({
         ],
     },
 });
+
+export const loggerMiddleware = (req, res, next) => {
+    logger.info(
+        `${chalk.red(req.method)} "${req.originalUrl}" from remote address: "${
+            req.ip
+        }"`
+    );
+    next();
+};
 
 export default logger;

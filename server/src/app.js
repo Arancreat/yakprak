@@ -1,19 +1,8 @@
 import "./cfg.js";
 import express from "express";
-import logger from "./utils/logger.js";
-import sendMail from "./utils/mailer.js";
-import chalk from "chalk";
-import traineeRoute from "./lib/trainee/route.js";
+import { logger, loggerMiddleware } from "./utils/logger.js";
 import db from "./database/config.js";
-
-const loggerMiddleware = (req, res, next) => {
-    logger.info(
-        `${chalk.red(req.method)} "${req.originalUrl}" from remote address: "${
-            req.ip
-        }"`
-    );
-    next();
-};
+import traineeRoute from "./api/trainee/route.js";
 
 // parameters
 const PORT = 8080;
