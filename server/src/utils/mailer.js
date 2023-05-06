@@ -1,6 +1,7 @@
 import nodemailer from "nodemailer";
+import logger from "./logger.js";
 
-const sendMail = (mailAddress) => {
+const sendMail = (mailAddress, subject, text) => {
     const transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
@@ -12,15 +13,15 @@ const sendMail = (mailAddress) => {
     const mailOptions = {
         from: process.env.MAIL_USER,
         to: mailAddress,
-        subject: "Test Email",
-        text: "This is a test email sent using Nodemailer",
+        subject: subject,
+        text: text,
     };
 
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
-            console.error(error);
+            logger.fatal(error);
         } else {
-            console.log("Email sent: " + info.response);
+            logger.info("Email sent: " + info.response);
         }
     });
 };
