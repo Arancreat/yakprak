@@ -53,18 +53,13 @@ Trainee.init(
             allowNull: false,
             unique: true,
         },
-        email_activation_link: {
+        emailCode: {
             type: DataTypes.STRING(255),
         },
-        email_code: {
-            type: DataTypes.STRING(255),
+        emailCodeDate: {
+            type: DataTypes.DATE
         },
-        email_is_activated: {
-            type: DataTypes.BOOLEAN,
-            allowNull: false,
-            defaultValue: false,
-        },
-        hashed_password: {
+        hashedPassword: {
             type: DataTypes.STRING(255),
             allowNull: false,
         },
@@ -72,12 +67,7 @@ Trainee.init(
             type: DataTypes.STRING(15),
             allowNull: false,
             defaultValue: "",
-        },
-        phone_is_verified: {
-            type: DataTypes.BOOLEAN,
-            allowNull: false,
-            defaultValue: false,
-        },
+        }
     },
     {
         sequelize: db,

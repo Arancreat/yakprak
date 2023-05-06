@@ -5,8 +5,8 @@ const traineeRoute = Router();
 
 traineeRoute.get("/all", controller.getAll);
 traineeRoute.get("/:id", controller.getById);
-traineeRoute.post('/signup', controller.signup);
-traineeRoute.post('/login', controller.login);
-traineeRoute.put("/:id", controller.update);
+traineeRoute.post('/signup', controller.postSignup);
+traineeRoute.post('/login', controller.postLogin);
+traineeRoute.put("/:id", controller.putUpdate);
 
 export default traineeRoute;
