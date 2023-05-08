@@ -11,17 +11,17 @@ Trainee.init(
             primaryKey: true,
         },
         firstName: {
-            type: DataTypes.STRING(31),
+            type: DataTypes.STRING(30),
             allowNull: false,
             defaultValue: "",
         },
         lastName: {
-            type: DataTypes.STRING(31),
+            type: DataTypes.STRING(30),
             allowNull: false,
             defaultValue: "",
         },
         patronymic: {
-            type: DataTypes.STRING(31),
+            type: DataTypes.STRING(30),
             allowNull: false,
             defaultValue: "",
         },
@@ -34,17 +34,17 @@ Trainee.init(
             type: DataTypes.DATE,
         },
         country: {
-            type: DataTypes.STRING(31),
+            type: DataTypes.STRING(30),
             allowNull: false,
             defaultValue: "",
         },
         region: {
-            type: DataTypes.STRING(31),
+            type: DataTypes.STRING(30),
             allowNull: false,
             defaultValue: "",
         },
         city: {
-            type: DataTypes.STRING(31),
+            type: DataTypes.STRING(30),
             allowNull: false,
             defaultValue: "",
         },

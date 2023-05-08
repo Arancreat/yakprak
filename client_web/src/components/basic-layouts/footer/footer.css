@@ -1,0 +1,20 @@
+.wrap {
+    display: flex;
+    position: relative;
+    height: 67px;
+    background-color: #ff6347;
+    color: #fff;
+    width: 100%;
+    margin-top: auto;
+}
+
+.main {
+    display: flex;
+    align-items: center;
+    max-width: 1200px;
+    width: 75%;
+    margin: 0 auto;
+    justify-content: space-between;
+    font-size: 20px;
+    background-color: inherit;
+}
