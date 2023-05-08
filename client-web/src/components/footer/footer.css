@@ -1,11 +1,11 @@
-.footer-wrap {
+footer {
     display: flex;
-    position: relative;
-    height: 67px;
+    position:relative;
+    bottom: 0;
+    height: 64px;
     background-color: #ff6347;
     color: #fff;
     width: 100%;
-    margin-top: auto;
 }
 
 .footer-main {

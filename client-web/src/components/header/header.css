@@ -13,7 +13,7 @@
     width: 75%;
     margin: 0 auto;
     justify-content: space-between;
-    font-size: 16px;
+    font-size: 24px;
     background-color: inherit;
 }
 
@@ -23,7 +23,6 @@
     margin: 0;
     padding: 0;
     list-style: none;
-    font-size: 24px;
 }
 
 .nav a {

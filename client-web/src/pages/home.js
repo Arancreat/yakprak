@@ -3,6 +3,7 @@ const Home = () => {
         <>
             <h2>Home</h2>
             Work in progress
+            
         </>
     );
 };
