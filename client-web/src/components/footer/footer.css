@@ -1,4 +1,4 @@
-.wrap {
+.footer-wrap {
     display: flex;
     position: relative;
     height: 67px;
@@ -8,7 +8,7 @@
     margin-top: auto;
 }
 
-.main {
+.footer-main {
     display: flex;
     align-items: center;
     max-width: 1200px;

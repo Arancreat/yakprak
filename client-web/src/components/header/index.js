@@ -1,19 +1,19 @@
-import Link from "next/link";
+import { Link } from "react-router-dom";
 import styles from "./header.css";
-import Button from "@/components/button";
+import Button from "../button";
 
 const Header = () => {
     return (
         <header>
             <div className="nav_wrap">
                 <nav className="nav">
-                    <Link href="/" className="site_title">
+                    <Link to="/" className="site_title">
                         YakPrak
                     </Link>
 
                     <ul>
                         <li>
-                            <Link href="/about">О нас</Link>
+                            <Link to="/about">О нас</Link>
                         </li>
                         <li>
                             <Button text="Войти" />

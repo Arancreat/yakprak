@@ -1,6 +1,7 @@
 /* General button style */
 .btn {
     display: flex;
+    align-items: center;
     background: #ff6347;
     color: #fff;
     border: none;
