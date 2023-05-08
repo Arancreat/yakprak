@@ -5,8 +5,7 @@
 body {
     display: flex;
     flex-direction: column;
+    background-color: #F2F3F2;
     margin: 0;
     font-family: "Roboto";
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 }

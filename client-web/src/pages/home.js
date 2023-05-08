@@ -1,9 +1,14 @@
 const Home = () => {
     return (
         <>
-            <h2>Home</h2>
-            Work in progress
-            
+            <div className="post">
+                <h2>Home</h2>
+                Work in progress
+            </div>
+            <div className="post">
+                <h2>Home</h2>
+                Work in progress
+            </div>
         </>
     );
 };

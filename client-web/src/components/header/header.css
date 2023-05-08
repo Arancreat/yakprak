@@ -24,6 +24,9 @@
     padding: 0;
     list-style: none;
 }
+.nav li {
+    margin-left: 32px;
+}
 
 .nav a {
     display: flex;
@@ -48,5 +51,6 @@
 
 .nav .site_title {
     display: flex;
+    padding: 0px;
     font-size: 36px;
 }

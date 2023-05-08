@@ -4,18 +4,17 @@ import Header from "./components/header";
 import Footer from "./components/footer";
 import Home from "./pages/home";
 import About from "./pages/about";
+import Landing from "./pages/landing";
 
 const App = () => {
     return (
         <>
             <Header />
             <main>
-                <div className="content-main">
-                    <Routes>
-                        <Route path="/" element={<Home />} />
-                        <Route path="/about" element={<About />} />
-                    </Routes>
-                </div>
+                <Routes>
+                    <Route path="/" element={<Landing />} />
+                    <Route path="/about" element={<About />} />
+                </Routes>
             </main>
             <Footer />
         </>

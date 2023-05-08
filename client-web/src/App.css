@@ -1,15 +1,59 @@
 main {
     display: flex;
+    flex-direction: column;
     position: relative;
     width: 100%;
-    min-height: 100vh;
+    min-height: 90vh;
+    margin-top: 16px;
 }
 
-.content-main {
+/* Post style */
+
+.post {
     display: flex;
     flex-direction: column;
+    background-color: #ffff;
     max-width: 800px;
     width: 75%;
-    margin: 0 auto;
+    padding: 16px;
+    margin: 16px auto;
+    gap: 16px;
     font-size: 20px;
+    overflow: scroll;
+    border-radius: 16px;
+}
+.post h1 {
+    margin: 0px;
+    font-weight: 500;
+    font-size: 36px;
+}
+
+.post h2 {
+    margin: 0px;
+}
+
+/* General button style */
+.btn {
+    display: flex;
+    background: #ff6347;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: inherit;
+    font-family: inherit;
+    padding: 8px;
+    transition: all 0.3s;
+    justify-content: center;
+}
+
+.btn:hover {
+    position: relative;
+    background: #c0392b;
+    border: none;
+    border-radius: 8px;
+}
+
+.btn:active {
+    background: #c0392b;
+    top: 2px;
 }
