@@ -7,7 +7,7 @@ import Header from "./components/header";
 import Footer from "./components/footer";
 import About from "./pages/about";
 import Landing from "./pages/landing";
-import AuthModal from "./components/authModal";
+import AuthModal from "./components/modals/auth";
 
 const queryClient = new QueryClient();
 

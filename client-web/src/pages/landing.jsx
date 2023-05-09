@@ -1,5 +1,6 @@
 import "./landing.css";
 import React from "react";
+import PropTypes from "prop-types";
 import ImagePlaceholder from "../media/img-placeholder.png";
 
 const Landing = ({ open }) => {
@@ -39,5 +40,9 @@ const Landing = ({ open }) => {
         </>
     );
 };
+
+Landing.propTypes = {
+    open: PropTypes.func
+}
 
 export default Landing;
