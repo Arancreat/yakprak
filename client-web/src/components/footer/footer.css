@@ -1,6 +1,5 @@
 footer {
     display: flex;
-    position:relative;
     bottom: 0;
     height: 64px;
     background-color: #ff6347;
