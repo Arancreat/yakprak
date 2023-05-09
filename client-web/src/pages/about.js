@@ -2,8 +2,9 @@ const About = () => {
     return (
         <>
             <div className="post">
-                <h2>About</h2>
-                Website is programmed and designed by Valerii Myarikyanov.
+                <h2>О нас</h2>
+                Веб-сайт создан студентом группы М-ИВТ-21 Валерием Мярикяновым 
+                в рамках диссертационной работы.
             </div>
         </>
     );

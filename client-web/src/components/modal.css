@@ -20,29 +20,68 @@
     border-radius: 16px;
 }
 
-img {
-    width: 250px;
+.modalContainer img {
+    min-width: 150px;
+    min-height: 466px;
+    margin: 0;
+    border-radius: 16px 0 0 16px;
     object-fit: cover;
+    overflow: hidden;
 }
 
 .modalRight {
     width: 100%;
+    padding: 32px;
 }
 
 .modalCloseBtn {
     position: fixed;
-    top: 8px;
+    background-color: #ff6347;
+    color: #fff;
+    border-radius: 4px;
+    padding: 2px 8px;
+    top: 14px;
     right: 16px;
+    transition: all 0.3s;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
 }
 
-.modalBtnContainer {
+.modalCloseBtn:hover {
+    background-color: #c0392b;
+}
+
+.modalCloseBtn:active {
+    background-color: #c0392b;
+    top: 16px;
+}
+
+.modalForm input {
+    margin: 16px;
+    width: 100%;
+}
+
+.modalForm button {
+    margin: 16px;
+    width: 100%;
+}
+
+.modalLinkContainer {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    text-align: center;
-    width: 100%;
-    gap: 16px;
-    
+    gap: 4px;
+}
+
+.modalLink {
+    color: #ff6347;
+}
+.modalLink:hover {
+    color: dodgerblue;
 }
 
 .modalContent {
@@ -50,6 +89,5 @@ img {
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    margin-top: 48px;
     padding: 16px 32px;
 }

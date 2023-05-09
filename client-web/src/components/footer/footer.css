@@ -7,7 +7,7 @@ footer {
     width: 100%;
 }
 
-.footer-main {
+footer .footer-main {
     display: flex;
     align-items: center;
     max-width: 1200px;
