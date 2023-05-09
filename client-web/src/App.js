@@ -8,17 +8,36 @@ import Landing from "./pages/landing";
 import AuthModal from "./components/authModal";
 
 const App = () => {
+    const [signup, setSignup] = useState(false);
     const [openAuthModal, setOpenAuthModal] = useState(false);
+
     return (
         <>
             <main>
-                <Header />
+                <Header
+                    open={() => {
+                        setSignup(false);
+                        setOpenAuthModal(true);
+                    }}
+                />
                 <Routes>
-                    <Route path="/" element={<Landing open={() => setOpenAuthModal(true)} />} />
+                    <Route
+                        path="/"
+                        element={
+                            <Landing
+                                open={() => {
+                                    setSignup(true);
+                                    setOpenAuthModal(true);
+                                }}
+                            />
+                        }
+                    />
                     <Route path="/about" element={<About />} />
                 </Routes>
                 <AuthModal
                     open={openAuthModal}
+                    signup={signup}
+                    onChangeAuth={() => setSignup(!signup)}
                     onClose={() => setOpenAuthModal(false)}
                 />
             </main>

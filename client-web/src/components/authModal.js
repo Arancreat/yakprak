@@ -2,9 +2,7 @@ import "./modal.css";
 import imagePlaceholder from "../media/img-placeholder.png";
 import { useEffect, useState } from "react";
 
-const AuthModal = ({ open, onClose, signup }) => {
-    const [isSignup, setIsSignup] = useState(signup);
-
+const AuthModal = ({ open, signup, onClose, onChangeAuth }) => {
     useEffect(() => {
         if (open) document.body.style.overflow = "hidden";
         else document.body.style.overflow = "unset";
@@ -47,7 +45,7 @@ const AuthModal = ({ open, onClose, signup }) => {
                 </div>
                 <div className="modalLinkContainer">
                     Нет аккаунта?
-                    <p className="modalLink" onClick={() => setIsSignup(true)}>
+                    <p className="modalLink" onClick={() => onChangeAuth()}>
                         Зарегистрироваться
                     </p>
                 </div>
@@ -58,20 +56,18 @@ const AuthModal = ({ open, onClose, signup }) => {
     const Signup = () => {
         return (
             <>
-                <div className="modalContent">
+                <div className="modalContent" autoComplete="false">
                     <form className="modalForm" onSubmit={onSubmitSignup}>
                         <h2>Регистрация</h2>
                         <input
                             id="signupName"
                             type="text"
                             placeholder="Имя"
-                            autoComplete="new-name"
                         ></input>
                         <input
                             id="signupSurname"
                             type="text"
                             placeholder="Фамилия"
-                            autoComplete="new-surname"
                         ></input>
                         <input
                             id="signupEmail"
@@ -97,7 +93,7 @@ const AuthModal = ({ open, onClose, signup }) => {
                 </div>
                 <div className="modalLinkContainer">
                     Есть аккаунт?
-                    <p className="modalLink" onClick={() => setIsSignup(false)}>
+                    <p className="modalLink" onClick={() => onChangeAuth()}>
                         Войти
                     </p>
                 </div>
@@ -118,7 +114,7 @@ const AuthModal = ({ open, onClose, signup }) => {
                     <p onClick={onClose} className="modalCloseBtn">
                         X
                     </p>
-                    {isSignup ? Signup() : Login()}
+                    {signup ? Signup() : Login()}
                 </div>
             </div>
         </div>

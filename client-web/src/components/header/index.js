@@ -1,7 +1,7 @@
 import "./header.css";
 import { Link } from "react-router-dom";
 
-const Header = (props) => {
+const Header = ({open}) => {
     return (
         <header>
             <div className="nav_wrap">
@@ -14,7 +14,7 @@ const Header = (props) => {
                             <Link to="/about">О нас</Link>
                         </li>
                         <li>
-                            <button className="btn">Войти</button>
+                            <button className="btn" onClick={open}>Войти</button>
                         </li>
                     </ul>
                 </nav>
