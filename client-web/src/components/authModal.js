@@ -1,6 +1,7 @@
 import "./modal.css";
 import imagePlaceholder from "../media/img-placeholder.png";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 
 const AuthModal = ({ open, signup, onClose, onChangeAuth }) => {
     useEffect(() => {
@@ -119,6 +120,13 @@ const AuthModal = ({ open, signup, onClose, onChangeAuth }) => {
             </div>
         </div>
     );
+};
+
+AuthModal.propTypes = {
+    open: PropTypes.bool,
+    signup: PropTypes.bool,
+    onClose: PropTypes.func,
+    onChangeAuth: PropTypes.func,
 };
 
 export default AuthModal;

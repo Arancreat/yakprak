@@ -1,4 +1,5 @@
 import "./landing.css";
+import React from "react";
 import ImagePlaceholder from "../media/img-placeholder.png";
 
 const Landing = ({ open }) => {

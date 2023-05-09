@@ -1,18 +1,22 @@
 import "./app.css";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import Header from "./components/header";
 import Footer from "./components/footer";
 import About from "./pages/about";
 import Landing from "./pages/landing";
 import AuthModal from "./components/authModal";
 
+const queryClient = new QueryClient();
+
 const App = () => {
     const [signup, setSignup] = useState(false);
     const [openAuthModal, setOpenAuthModal] = useState(false);
 
     return (
-        <>
+        <QueryClientProvider client={queryClient}>
             <main>
                 <Header
                     open={() => {
@@ -42,7 +46,8 @@ const App = () => {
                 />
             </main>
             <Footer />
-        </>
+            <ReactQueryDevtools initialIsOpen={false} />
+        </QueryClientProvider>
     );
 };
 
