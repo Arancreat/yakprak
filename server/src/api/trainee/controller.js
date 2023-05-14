@@ -5,12 +5,14 @@ import Trainee from "./model.js";
 
 const controller = {
     getAll: async (req, res) => {
-        await Trainee.findAll()
+        await Trainee.findAll({
+            attributes: ["id", "email"],
+        })
             .then((response) => {
                 const cookies = req.cookies;
                 console.log(cookies);
 
-                res.status(200).json(response);
+                return res.status(200).json(response);
             })
             .catch((error) => {
                 error = ApiError.InternalServerError(error.stack);
@@ -21,7 +23,7 @@ const controller = {
         const id = req.params.id;
         await Trainee.findByPk(id)
             .then((response) => {
-                res.status(200).json(response);
+                return res.status(200).json(response);
             })
             .catch((error) => {
                 error = ApiError.InternalServerError(error.stack);
@@ -38,13 +40,15 @@ const controller = {
                 email: data.email,
                 hashedPassword: hashedPassword,
             });
+
             const token = await createToken(newTrainee.id);
             res.cookie("jwt", token, {
                 httpOnly: true,
                 maxAge: 1000 * 60 * 60 * 24,
                 sameSite: "Strict",
             });
-            res.status(200).json({ traineeId: newTrainee.id });
+
+            return res.status(200).json({ traineeId: newTrainee.id });
         } catch (error) {
             error = ApiError.InternalServerError(
                 error.name + "\r\n" + error.stack
@@ -55,10 +59,33 @@ const controller = {
     postLogin: async (req, res) => {
         const data = req.body;
         try {
-            console.log("User log in:");
-            console.log(data);
+            const trainee = await Trainee.findOne({
+                where: { email: data.email },
+            });
+            if (trainee === null) {
+                return res
+                    .status(403)
+                    .json({ message: "Wrong email or password" });
+            }
 
-            res.status(200).json(data);
+            const auth = await bcrypt.compare(
+                data.password,
+                trainee.hashedPassword
+            );
+            if (!auth) {
+                return res
+                    .status(403)
+                    .json({ message: "Wrong email or password" });
+            }
+
+            const token = await createToken(trainee.id);
+            res.cookie("jwt", token, {
+                httpOnly: true,
+                maxAge: 1000 * 60 * 60 * 24,
+                sameSite: "Strict",
+            });
+
+            return res.status(200).json({ traineeId: trainee.id });
         } catch (error) {
             error = ApiError.InternalServerError(error.stack);
             return res.status(error.status).json(error.data);
@@ -68,7 +95,7 @@ const controller = {
         const data = req.body;
         user.update(data)
             .then((response) => {
-                res.status(200).json(response);
+                return res.status(200).json(response);
             })
             .catch((error) => {
                 error = ApiError.InternalServerError(error.stack);

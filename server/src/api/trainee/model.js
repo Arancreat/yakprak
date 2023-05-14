@@ -36,17 +36,17 @@ Trainee.init(
         country: {
             type: DataTypes.STRING(30),
             allowNull: false,
-            defaultValue: "",
+            defaultValue: "Россия",
         },
         region: {
             type: DataTypes.STRING(30),
             allowNull: false,
-            defaultValue: "",
+            defaultValue: "Республика Саха (Якутия)",
         },
         city: {
             type: DataTypes.STRING(30),
             allowNull: false,
-            defaultValue: "",
+            defaultValue: "Якутск",
         },
         email: {
             type: DataTypes.STRING(255),
