@@ -3,9 +3,9 @@ import jwt from "jsonwebtoken";
 
 const maxLifeTime = 5 * 60;
 
-export const createToken = async (id) => {
+export const createToken = async (id, role) => {
     try {
-        return jwt.sign({ id }, process.env.JWT_SECRET, {
+        return jwt.sign({ user: id, role: role }, process.env.JWT_SECRET, {
             expiresIn: maxLifeTime,
         });
     } catch (error) {

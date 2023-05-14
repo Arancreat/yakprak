@@ -41,7 +41,7 @@ const controller = {
                 hashedPassword: hashedPassword,
             });
 
-            const token = await createToken(newTrainee.id);
+            const token = await createToken(newTrainee.id, "trainee");
             res.cookie("jwt", token, {
                 httpOnly: true,
                 maxAge: 1000 * 60 * 60 * 24,
@@ -78,7 +78,7 @@ const controller = {
                     .json({ message: "Wrong email or password" });
             }
 
-            const token = await createToken(trainee.id);
+            const token = await createToken(trainee.id, "trainee");
             res.cookie("jwt", token, {
                 httpOnly: true,
                 maxAge: 1000 * 60 * 60 * 24,
