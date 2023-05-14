@@ -8,7 +8,7 @@
 .modalContainer {
     display: flex;
     background-color: #fff;
-    max-width: 600px;
+    max-width: 650px;
     width: 100%;
     position: fixed;
     top: 40%;
@@ -57,6 +57,12 @@
     top: 16px;
 }
 
+.modalContent {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
 .modalForm input {
     margin: 16px;
     width: 100%;
@@ -65,6 +71,12 @@
 .modalForm button {
     margin: 16px;
     width: 100%;
+}
+
+.modalForm .modalError {
+    margin: 16px;
+    color: red;
+    text-align: left;
 }
 
 .modalLinkContainer {
@@ -80,12 +92,4 @@
 
 .modalLink:hover {
     color: dodgerblue;
-}
-
-.modalContent {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    padding: 16px 32px;
 }
