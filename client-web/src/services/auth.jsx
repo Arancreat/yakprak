@@ -5,11 +5,6 @@ const auth = axios.create({
     baseURL: "http://localhost:8080/api",
 });
 
-// auth.interceptors.request.use((config) => {
-//     config.headers.Authorization = `Bearer ${localStorage.getItem('token')}`
-//     return config
-// })
-
 export const ApiSignup = async (data) => {
     return auth
         .post("/trainee/signup", {

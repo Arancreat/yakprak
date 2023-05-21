@@ -1,14 +1,14 @@
 import React from "react";
 
-const Home = () => {
+const Profile = () => {
     return (
         <>
             <div className="post">
-                <h2>Home</h2>
+                <h2>Профиль пользователя</h2>
                 Work in progress
             </div>
         </>
     );
 };
 
-export default Home;
+export default Profile;
