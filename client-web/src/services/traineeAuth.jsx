@@ -1,12 +1,7 @@
-import axios from "axios";
-
-const auth = axios.create({
-    withCredentials: true,
-    baseURL: "http://localhost:8080/api",
-});
+import api from "./instance";
 
 export const ApiSignup = async (data) => {
-    return auth
+    return api
         .post("/trainee/signup", {
             email: data.email,
             password: data.password,
@@ -26,7 +21,7 @@ export const ApiSignup = async (data) => {
 };
 
 export const ApiLogin = async (data) => {
-    return auth
+    return api
         .post("/trainee/login", {
             email: data.email,
             password: data.password,

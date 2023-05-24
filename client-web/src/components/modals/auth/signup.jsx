@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import validator from "validator";
-import { ApiSignup } from "../../../services/auth";
+import { ApiSignup } from "../../../services/traineeAuth";
 
 const Signup = ({ onChangeAuth, onClose }) => {
     const [name, setName] = useState("");

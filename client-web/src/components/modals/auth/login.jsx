@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { ApiLogin } from "../../../services/auth";
+import { ApiLogin } from "../../../services/traineeAuth";
 
 const Login = ({ onChangeAuth, onClose }) => {
     const [email, setEmail] = useState("");

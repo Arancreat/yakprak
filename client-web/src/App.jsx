@@ -1,11 +1,11 @@
-import "./app.css";
+import "./App.css";
 import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import Cookies from "js-cookie";
 import Header from "./components/header";
-import HeaderTrainee from "./components/header/header-trainee";
+import TraineeHeader from "./components/header/traineeHeader";
 import Footer from "./components/footer";
 import Home from "./pages/home";
 import About from "./pages/about";
@@ -20,12 +20,12 @@ const App = () => {
     const [openAuthModal, setOpenAuthModal] = useState(false);
     const jwtCookie = Cookies.get("jwt");
 
-    console.log(jwtCookie);
+    console.log("jwt: ", jwtCookie);
     return (
         <QueryClientProvider client={queryClient}>
             <main>
                 {jwtCookie ? (
-                    <HeaderTrainee />
+                    <TraineeHeader />
                 ) : (
                     <Header
                         open={() => {

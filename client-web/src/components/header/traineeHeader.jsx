@@ -3,7 +3,7 @@ import "./header.css";
 import React from "react";
 import { Link } from "react-router-dom";
 
-const HeaderTrainee = () => {
+const TraineeHeader = () => {
     return (
         <header>
             <div className="nav_wrap">
@@ -38,4 +38,4 @@ const HeaderTrainee = () => {
     );
 };
 
-export default HeaderTrainee;
+export default TraineeHeader;

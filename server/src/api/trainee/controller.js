@@ -1,6 +1,6 @@
 import ApiError from "../exception.js";
 import bcrypt from "bcrypt";
-import { createToken } from "../jwt/service.js";
+import { createToken, decodeToken } from "../jwt/service.js";
 import Trainee from "./model.js";
 
 const controller = {
@@ -9,9 +9,6 @@ const controller = {
             attributes: ["id", "email"],
         })
             .then((response) => {
-                const cookies = req.cookies;
-                console.log(cookies);
-
                 return res.status(200).json(response);
             })
             .catch((error) => {
@@ -30,6 +27,24 @@ const controller = {
                 return res.status(error.status).json(error.data);
             });
     },
+    getCurrentUser: async (req, res) => {
+        const token = req.cookies.jwt;
+        try {
+            const tokenPayload = await decodeToken(token).then((response) => {
+                return response;
+            });
+            if (tokenPayload) {
+                await Trainee.findByPk(tokenPayload.user).then((response) => {
+                    return res.status(200).json(response);
+                });
+            } else return res.status(401).json({meessage: "Incorrect token"});
+        } catch (error) {
+            error = ApiError.InternalServerError(
+                error.name + "\r\n" + error.stack
+            );
+            return res.status(error.status).json(error.data);
+        }
+    },
     postSignup: async (req, res) => {
         const data = req.body;
         try {
@@ -44,7 +59,7 @@ const controller = {
             const token = await createToken(newTrainee.id, "trainee");
             res.cookie("jwt", token, {
                 httpOnly: true,
-                maxAge: 1000 * 60 * 60 * 24,
+                maxAge: 1000 * 5 * 60,
                 sameSite: "Strict",
             });
 
