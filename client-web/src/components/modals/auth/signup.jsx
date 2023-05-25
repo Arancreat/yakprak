@@ -67,7 +67,7 @@ const Signup = ({ onChangeAuth, onClose }) => {
 
         if (error) return;
 
-        let status = await ApiSignup({ email: email, password: pass }).then(
+        let status = await ApiSignup({ firstName: name, lastName: surname, email: email, password: pass }).then(
             (res) => {
                 return res;
             }

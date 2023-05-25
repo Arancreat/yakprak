@@ -1,8 +1,6 @@
 import "./App.css";
 import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import Cookies from "js-cookie";
 import Header from "./components/header";
 import TraineeHeader from "./components/header/traineeHeader";
@@ -12,17 +10,16 @@ import About from "./pages/about";
 import Landing from "./pages/landing";
 import AuthModal from "./components/modals/auth";
 import Profile from "./pages/profile";
-
-const queryClient = new QueryClient();
+import NotFound from "./pages/notFound";
 
 const App = () => {
-    const [signup, setSignup] = useState(false);
-    const [openAuthModal, setOpenAuthModal] = useState(false);
     const jwtCookie = Cookies.get("jwt");
 
-    console.log("jwt: ", jwtCookie);
+    const [signup, setSignup] = useState(false);
+    const [openAuthModal, setOpenAuthModal] = useState(false);
+
     return (
-        <QueryClientProvider client={queryClient}>
+        <>
             <main>
                 {jwtCookie ? (
                     <TraineeHeader />
@@ -37,7 +34,10 @@ const App = () => {
 
                 <Routes>
                     {jwtCookie ? (
-                        <Route path="/" element={<Home />} />
+                        <>
+                            <Route path="/" element={<Home />} />
+                            <Route path="/profile" element={<Profile />} />
+                        </>
                     ) : (
                         <Route
                             path="/"
@@ -52,7 +52,7 @@ const App = () => {
                         />
                     )}
                     <Route path="/about" element={<About />} />
-                    <Route path="/profile" element={<Profile />} />
+                    <Route path="*" element={<NotFound />} />
                 </Routes>
                 <AuthModal
                     open={openAuthModal}
@@ -62,8 +62,7 @@ const App = () => {
                 />
             </main>
             <Footer />
-            <ReactQueryDevtools initialIsOpen={false} />
-        </QueryClientProvider>
+        </>
     );
 };
 

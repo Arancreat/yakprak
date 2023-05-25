@@ -1,12 +1,11 @@
 import ApiError from "../exception.js";
 import jwt from "jsonwebtoken";
 
-const maxLifeTime = 5 * 60;
 
-export const createToken = async (id, role) => {
+export const createToken = async (id, role, tokenMaxAge) => {
     try {
         return jwt.sign({ user: id, role: role }, process.env.JWT_SECRET, {
-            expiresIn: maxLifeTime,
+            expiresIn: tokenMaxAge/1000,
         });
     } catch (error) {
         if (error.status == undefined)

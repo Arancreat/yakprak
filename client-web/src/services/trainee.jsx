@@ -8,6 +8,9 @@ export const ApiCurrentUserData = async (data) => {
         })
         .catch((error) => {
             if (error.response) {
+                if (error.response.status == 401) {
+                    window.location.reload(false);
+                }
                 return error.response.status;
             } else if (error.request) {
                 return 503;
