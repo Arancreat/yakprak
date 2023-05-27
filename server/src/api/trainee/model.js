@@ -57,7 +57,7 @@ Trainee.init(
             type: DataTypes.STRING(255),
         },
         emailCodeDate: {
-            type: DataTypes.DATE
+            type: DataTypes.DATE,
         },
         hashedPassword: {
             type: DataTypes.STRING(255),
@@ -67,7 +67,12 @@ Trainee.init(
             type: DataTypes.STRING(15),
             allowNull: false,
             defaultValue: "",
-        }
+        },
+        avatar: {
+            type: DataTypes.STRING(255),
+            allowNull: false,
+            defaultValue: "/storage/default/avatar_default.jpg",
+        },
     },
     {
         sequelize: db,

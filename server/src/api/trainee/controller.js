@@ -2,6 +2,7 @@ import ApiError from "../exception.js";
 import bcrypt from "bcrypt";
 import { createToken, decodeToken } from "../jwt/service.js";
 import Trainee from "./model.js";
+import { uploadSingleImage } from "../upload/service.js";
 
 const tokenMaxAge = 1000 * 10 * 60;
 
@@ -112,6 +113,25 @@ const controller = {
             error = ApiError.InternalServerError(error.stack);
             return res.status(error.status).json(error.data);
         }
+    },
+    postUploadAvatar: async (req, res) => {
+        uploadSingleImage(req, res, (err) => {
+            if (err) {
+                return res
+                    .status(400)
+                    .json({ message: "Image isn't uploaded" });
+            }
+            const trainee = Trainee.update(
+                { avatar: "/storage/" + req.file.filename },
+                { where: { id: req.body.id } }
+            ).catch((err) => {
+                return res
+                    .status(400)
+                    .json({ message: "Avatar isn't updated" });
+            });
+
+            res.status(200).json({ message: "Image uploaded" });
+        });
     },
     putUpdate: async (req, res) => {
         const data = req.body;

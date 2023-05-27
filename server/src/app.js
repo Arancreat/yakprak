@@ -4,8 +4,6 @@ import { logger, loggerMiddleware } from "./utils/logger.js";
 import db from "./database/config.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import session from "express-session";
-import passport from "passport";
 import traineeRoute from "./api/trainee/route.js";
 
 // parameters
@@ -26,15 +24,7 @@ app.use(
         ],
     })
 );
-app.use(
-    session({
-        secret: "so secret that it's on github",
-        resave: false,
-        saveUninitialized: false,
-    })
-);
-app.use(passport.initialize());
-app.use(passport.session());
+
 app.use(cookieParser());
 
 // routes
