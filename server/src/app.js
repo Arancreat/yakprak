@@ -18,13 +18,10 @@ app.use(loggerMiddleware);
 app.use(
     cors({
         credentials: true,
-        origin: [
-            "http://localhost:3000",
-            "https://localhost:3000",
-        ],
+        origin: ["http://localhost:3000", "https://localhost:3000"],
     })
 );
-
+app.use("/files", express.static("storage"));
 app.use(cookieParser());
 
 // routes

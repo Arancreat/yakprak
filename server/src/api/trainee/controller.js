@@ -4,7 +4,7 @@ import { createToken, decodeToken } from "../jwt/service.js";
 import Trainee from "./model.js";
 import { uploadSingleImage } from "../upload/service.js";
 
-const tokenMaxAge = 1000 * 10 * 60;
+const tokenMaxAge = 1000 * 60 * 60;
 
 const controller = {
     getAll: async (req, res) => {
@@ -122,7 +122,7 @@ const controller = {
                     .json({ message: "Image isn't uploaded" });
             }
             const trainee = Trainee.update(
-                { avatar: "/storage/" + req.file.filename },
+                { avatar: "/files/" + req.file.filename },
                 { where: { id: req.body.id } }
             ).catch((err) => {
                 return res

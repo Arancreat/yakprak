@@ -1,0 +1,46 @@
+/* Post style */
+
+.profile {
+    display: flex;
+    background-color: #ffff;
+    max-width: 800px;
+    width: 75%;
+    padding: 16px;
+    margin: 16px auto;
+    gap: 16px;
+    font-size: 20px;
+    overflow: scroll;
+    border-radius: 16px;
+}
+
+.profile .column {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    min-width: 250px;
+}
+
+.profile .column h1 {
+    margin: 0px 0px 16px 0px;
+    font-weight: 500;
+    font-size: 36px;
+}
+
+.profile .column h2 {
+    margin: 0px 0px 16px 0px;
+}
+
+.avatar {
+    width: 250px;
+    height: 250px;
+    border-radius: 8px;
+    margin: 0px;
+    align-self: flex-end;
+    object-fit: cover;
+}
+
+.profile .btn {
+    width: 250px;
+    margin: 16px 0px 0px 0px;
+    align-self: flex-end;
+}

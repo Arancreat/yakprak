@@ -71,7 +71,7 @@ Trainee.init(
         avatar: {
             type: DataTypes.STRING(255),
             allowNull: false,
-            defaultValue: "/storage/default/avatar_default.jpg",
+            defaultValue: "/files/avatar_default.jpg",
         },
     },
     {

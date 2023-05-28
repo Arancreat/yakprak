@@ -1,15 +1,9 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import { ApiCurrentUserData } from "../services/trainee";
+import ProfileComponent from "../components/profile/profile";
 
 const Profile = () => {
-    var dateOptions = {
-        year: "numeric",
-        month: "numeric",
-        day: "numeric",
-        timezone: "UTC",
-    };
-    
     const {
         isLoading,
         isError,
@@ -30,26 +24,7 @@ const Profile = () => {
 
     return (
         <>
-            <div className="post">
-                <h2>
-                    {currentUser.data?.lastName} {currentUser.data?.firstName}{" "}
-                    {currentUser.data?.patronymic}
-                </h2>
-                <div>
-                    На сайте с{" "}
-                    {new Date(currentUser.data?.createdAt).toLocaleString(
-                        "ru",
-                        dateOptions
-                    )}
-                </div>
-                <div>
-                    Пол:{" "}
-                    {currentUser.data?.gender == "unknown"
-                        ? "не указан"
-                        : currentUser.data?.gender}
-                </div>
-                <div>Почта: {currentUser.data?.email}</div>
-            </div>
+            <ProfileComponent currentUser={currentUser.data} />
         </>
     );
 };

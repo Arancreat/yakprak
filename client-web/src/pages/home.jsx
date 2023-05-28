@@ -4,8 +4,8 @@ const Home = () => {
     return (
         <>
             <div className="post">
-                <h2>Home</h2>
-                Work in progress
+                <h2>Главное</h2>
+                В разработке
             </div>
         </>
     );
