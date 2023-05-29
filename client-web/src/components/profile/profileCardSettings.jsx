@@ -220,7 +220,7 @@ const ProfileCardSettings = ({ currentUser, toggleEdit }) => {
                             style={{ display: "none" }}
                             ref={avatarRef}
                             onChange={(e) => handlePhotoChange(e)}
-                            accept="image/.png,.jpg,.jpeg"
+                            accept="image/,.png,.jpg,.jpeg"
                         />
                         <img
                             className="avatar"

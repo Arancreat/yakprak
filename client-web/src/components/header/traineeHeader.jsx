@@ -23,7 +23,7 @@ const TraineeHeader = () => {
                                     <a
                                         onClick={() => {
                                             Cookies.remove("jwt");
-                                            window.location.reload(false);
+                                            window.location.replace("/");
                                         }}
                                     >
                                         Выйти
