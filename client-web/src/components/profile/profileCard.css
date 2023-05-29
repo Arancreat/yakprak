@@ -1,33 +1,39 @@
-/* Post style */
+/* Profile style */
 
 .profile {
     display: flex;
+    flex-direction: column;
     background-color: #ffff;
     max-width: 800px;
+    height: 516px;
     width: 75%;
     padding: 16px;
     margin: 16px auto;
-    gap: 16px;
     font-size: 20px;
     overflow: scroll;
     border-radius: 16px;
 }
 
-.profile .column {
+.profile h2 {
+    margin: 0px 0px 16px 0px;
+}
+
+.profileCard {
+    display: flex;
+    flex-direction: row;
+    height: inherit;
+}
+
+.profileCard .column {
     display: flex;
     flex-direction: column;
     width: 50%;
     min-width: 250px;
+    gap: 8px;
 }
 
-.profile .column h1 {
-    margin: 0px 0px 16px 0px;
-    font-weight: 500;
-    font-size: 36px;
-}
-
-.profile .column h2 {
-    margin: 0px 0px 16px 0px;
+.profileCard .createdAt {
+    margin-top: auto;
 }
 
 .avatar {
@@ -39,8 +45,12 @@
     object-fit: cover;
 }
 
-.profile .btn {
+.profileCard .column .buttons {
+    align-self: flex-end;
+    margin-top: auto;
+}
+
+.profileCard .buttons .btn {
     width: 250px;
     margin: 16px 0px 0px 0px;
-    align-self: flex-end;
 }

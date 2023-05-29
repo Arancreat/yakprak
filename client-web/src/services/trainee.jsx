@@ -19,3 +19,37 @@ export const ApiCurrentUserData = async (data) => {
             }
         });
 };
+
+export const ApiPostAvatar = async (data) => {
+    return api
+        .post("/trainee/upload-avatar", data)
+        .then((response) => {
+            return response.data;
+        })
+        .catch((error) => {
+            if (error.response) {
+                return error.response.status;
+            } else if (error.request) {
+                return 503;
+            } else {
+                return 400;
+            }
+        });
+};
+
+export const ApiPutProfileData = async (data) => {
+    return api
+        .put("/trainee/update", data)
+        .then((response) => {
+            return response.data;
+        })
+        .catch((error) => {
+            if (error.response) {
+                return error.response.status;
+            } else if (error.request) {
+                return 503;
+            } else {
+                return 400;
+            }
+        });
+};

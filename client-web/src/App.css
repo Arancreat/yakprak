@@ -57,6 +57,33 @@ main {
     top: 2px;
 }
 
+/* Cancel button style */
+.btnCancel {
+    display: flex;
+    background: #d0d0d0;
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    font-size: inherit;
+    font-family: inherit;
+    padding: 8px;
+    transition: all 0.3s;
+    justify-content: center;
+}
+
+.btnCancel:hover {
+    position: relative;
+    background: #f2f3f2;
+    border: none;
+    border-radius: 8px;
+}
+
+.btnCancel:active {
+    background: #c0392b;
+    border: none;
+    top: 2px;
+}
+
 input {
     display: flex;
     background-color: #f2f3f2;

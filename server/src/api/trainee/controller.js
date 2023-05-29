@@ -116,28 +116,35 @@ const controller = {
     },
     postUploadAvatar: async (req, res) => {
         uploadSingleImage(req, res, (err) => {
-            if (err) {
-                return res
-                    .status(400)
-                    .json({ message: "Image isn't uploaded" });
-            }
-            const trainee = Trainee.update(
-                { avatar: "/files/" + req.file.filename },
-                { where: { id: req.body.id } }
-            ).catch((err) => {
-                return res
-                    .status(400)
-                    .json({ message: "Avatar isn't updated" });
-            });
+            try {
+                Trainee.update(
+                    { avatar: "/files/" + req.file.filename },
+                    { where: { id: req.body.id } }
+                );
 
-            res.status(200).json({ message: "Image uploaded" });
+                res.status(200).json({ path: "/files/" + req.file.filename });
+            } catch (error) {
+                return res.status(400).json({ message: error.message });
+            }
         });
     },
     putUpdate: async (req, res) => {
         const data = req.body;
-        user.update(data)
+        const trainee = await Trainee.update(
+            {
+                firstName: data.firstName,
+                lastName: data.lastName,
+                patronymic: data.patronymic,
+                phone: data.phone,
+                birthdate: data.birthdate,
+                gender: data.gender,
+            },
+            { where: { id: data.id } }
+        )
             .then((response) => {
-                return res.status(200).json(response);
+                return res
+                    .status(200)
+                    .json({ message: "Профиль успешно обновлен" });
             })
             .catch((error) => {
                 error = ApiError.InternalServerError(error.stack);

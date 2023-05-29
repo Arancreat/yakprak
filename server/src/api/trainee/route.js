@@ -10,6 +10,6 @@ traineeRoute.get("/currentUser", requireAuth, controller.getCurrentUser);
 traineeRoute.post("/signup", controller.postSignup);
 traineeRoute.post("/login", controller.postLogin);
 traineeRoute.post("/upload-avatar", controller.postUploadAvatar);
-traineeRoute.put("/edit/:id", controller.putUpdate);
+traineeRoute.put("/update", controller.putUpdate);
 
 export default traineeRoute;

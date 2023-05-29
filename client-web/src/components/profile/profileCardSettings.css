@@ -1,0 +1,109 @@
+/* Profile settings style */
+
+.profileSettings {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffff;
+    max-width: 800px;
+    width: 75%;
+    padding: 16px;
+    margin: 16px auto;
+    font-size: 20px;
+    overflow: scroll;
+    border-radius: 16px;
+}
+
+.profileSettings h2 {
+    margin: 0px 0px 16px 0px;
+}
+
+.profileSettingsForm {
+    display: flex;
+    flex-direction: row;
+}
+
+.profileSettingsForm .column {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    min-width: 250px;
+}
+
+.profileSettingsForm .column input {
+    margin: 0px 0px 16px 0px;
+}
+
+.profileSettingsForm fieldset {
+    border: solid 1px #ff6347;
+    border-radius: 8px;
+    padding: 6px;
+}
+
+.profileSettingsForm fieldset label {
+    display: flex;
+    flex-direction: row;
+    padding: 4px;
+    gap: 8px;
+}
+
+.profileSettingsForm .avatarWrapper {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-self: flex-end;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.profileSettingsForm .avatar {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    border-radius: 8px;
+    margin: 0px;
+}
+
+.profileSettingsForm .shadow {
+    background-color: rgba(0, 0, 0, 0.25);
+    transition: background-color 0.2s ease-in-out;
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    border-radius: 8px;
+    z-index: 2;
+}
+
+.profileSettingsForm .avatarWrapper:hover .shadow {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.profileSettingsForm .camera {
+    position: absolute;
+    color: rgba(0, 0, 0, 0.25);
+    width: 250px;
+    height: 250px;
+    padding: 50px;
+    border-radius: 8px;
+    margin: 0;
+    z-index: 3;
+}
+
+.profileSettingsForm .column .buttons {
+    align-self: flex-end;
+    margin-top: auto;
+}
+
+.profileSettingsForm .btn {
+    width: 250px;
+    margin: 16px 0px 0px 0px;
+}
+
+.profileSettingsForm .btnCancel {
+    width: 250px;
+    margin: 16px 0px 0px 0px;
+}
+
+.profileSettingsForm .profileError {
+    color: red;
+    text-align: left;
+}
