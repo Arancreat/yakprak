@@ -3,6 +3,8 @@ import bcrypt from "bcrypt";
 import { createToken, decodeToken } from "../jwt/service.js";
 import Trainee from "./model.js";
 import { uploadSingleImage } from "../upload/service.js";
+import Resume from "../resume/resume.model.js";
+import ResumeEducation from "../resume/resumeEducation.model.js";
 
 const tokenMaxAge = 1000 * 60 * 60;
 
@@ -59,6 +61,14 @@ const controller = {
                 lastName: data.lastName,
                 email: data.email,
                 hashedPassword: hashedPassword,
+            });
+
+            const newResume = await Resume.create({
+                traineeId: newTrainee.id,
+            });
+
+            await ResumeEducation.create({
+                resumeId: newResume.id,
             });
 
             const token = await createToken(

@@ -35,35 +35,6 @@ const controller = {
                 return res.status(error.status).json(error.data);
             });
     },
-    postSignup: async (req, res) => {
-        const data = req.body;
-        try {
-            const newResume = await Resume.create({
-                aboutMe: data.aboutMe,
-                skills: data.skills,
-                pros: data.pros,
-                cons: data.cons,
-                languages: data.languages,
-                traineeId: data.traineeId,
-            });
-
-            await ResumeEducation.create({
-                stage: data.stage,
-                institute: data.institute,
-                faculty: data.faculty,
-                speciality: data.speciality,
-                graduationYear: data.graduationYear,
-                resumeId: newResume.id,
-            });
-
-            return res.status(200).json({ message: "Резюме успешно создано" });
-        } catch (error) {
-            error = ApiError.InternalServerError(
-                error.name + "\r\n" + error.stack
-            );
-            return res.status(error.status).json(error.data);
-        }
-    },
     putUpdate: async (req, res) => {
         const data = req.body;
         try {
