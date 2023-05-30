@@ -1,6 +1,7 @@
 import ApiError from "../exception.js";
 import Resume from "./resume.model.js";
 import ResumeEducation from "./resumeEducation.model.js";
+import {  decodeToken } from "../jwt/service.js";
 
 const controller = {
     getAll: async (req, res) => {
@@ -13,20 +14,29 @@ const controller = {
                 return res.status(error.status).json(error.data);
             });
     },
-    getResumeByTraineeId: async (req, res) => {
-        const traineeId = req.params.traineeId;
-        await Resume.findOne({ where: { traineeId: traineeId } })
-            .then((response) => {
-                return res.status(200).json(response);
-            })
-            .catch((error) => {
-                error = ApiError.InternalServerError(error.stack);
-                return res.status(error.status).json(error.data);
+    getCurrentTraineeResume: async (req, res) => {
+        const token = req.cookies.jwt;
+        try {
+            const tokenPayload = await decodeToken(token).then((response) => {
+                return response;
             });
+            if (tokenPayload) {
+                await Resume.findOne({
+                    where: { traineeId: tokenPayload.user },
+                }).then((response) => {
+                    return res.status(200).json(response);
+                });
+            } else return res.status(401).json({ meessage: "Incorrect token" });
+        } catch (error) {
+            error = ApiError.InternalServerError(
+                error.name + "\r\n" + error.stack
+            );
+            return res.status(error.status).json(error.data);
+        }
     },
     getEducationByResumeId: async (req, res) => {
         const resumeId = req.params.resumeId;
-        await ResumeEducation.findOne({ where: { resumeId: resumeId } })
+        await ResumeEducation.findAll({ where: { resumeId: resumeId } })
             .then((response) => {
                 return res.status(200).json(response);
             })

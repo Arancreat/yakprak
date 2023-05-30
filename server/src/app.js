@@ -5,6 +5,7 @@ import db from "./database/config.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import traineeRoute from "./api/trainee/route.js";
+import resumeRoute from "./api/resume/route.js";
 
 // parameters
 const PORT = 8080;
@@ -26,6 +27,7 @@ app.use(cookieParser());
 
 // routes
 app.use("/api/trainee", traineeRoute);
+app.use("/api/resume", resumeRoute);
 
 db.sync();
 

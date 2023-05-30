@@ -11,6 +11,7 @@ import Landing from "./pages/landing";
 import AuthModal from "./components/modals/auth";
 import Profile from "./pages/profile";
 import NotFound from "./pages/notFound";
+import Resume from "./pages/resume";
 
 const App = () => {
     const jwtCookie = Cookies.get("jwt");
@@ -37,6 +38,7 @@ const App = () => {
                         <>
                             <Route path="/" element={<Home />} />
                             <Route path="/profile" element={<Profile />} />
+                            <Route path="/resume" element={<Resume />} />
                         </>
                     ) : (
                         <Route

@@ -1,8 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./profileCard.css";
+import { useNavigate } from "react-router-dom";
 
 const ProfileCard = ({ currentUser, toggleEdit }) => {
+    const navigate = useNavigate();
+
+    const navigateToResume = () => {
+        navigate("/resume");
+    };
+
     const dateOptions = {
         year: "numeric",
         month: "numeric",
@@ -59,7 +66,10 @@ const ProfileCard = ({ currentUser, toggleEdit }) => {
                         <button className="btn" onClick={toggleEdit}>
                             Настроить профиль
                         </button>
-                        <button className="btn">Создать резюме</button>
+
+                        <button className="btn" onClick={navigateToResume}>
+                            Заполнить резюме
+                        </button>
                     </div>
                 </div>
             </div>

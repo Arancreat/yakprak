@@ -1,0 +1,41 @@
+/* Post style */
+
+.resumeEdit {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffff;
+    max-width: 800px;
+    width: 75%;
+    padding: 16px;
+    margin: 16px auto;
+    gap: 16px;
+    font-size: 20px;
+    overflow: scroll;
+    border-radius: 16px;
+}
+
+.resumeEdit h2 {
+    margin: 0px;
+}
+
+.resumeEdit .resumeEditForm textarea {
+    margin-top: 16px;
+    width: 100%;
+    height: 100px;
+}
+
+.resumeEdit .resumeEditForm input {
+    margin-top: 16px;
+    width: 100%;
+}
+
+.resumeEdit .resumeEditForm .buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+}
+
+.resumeEdit .resumeEditForm .buttons button {
+    margin-top: 16px;
+    width: 50%;
+}
