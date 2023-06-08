@@ -28,6 +28,7 @@ app.use(cookieParser());
 // routes
 app.use("/api/trainee", traineeRoute);
 app.use("/api/resume", resumeRoute);
+app.use("/api/company", companyRoute);
 
 db.sync();
 
