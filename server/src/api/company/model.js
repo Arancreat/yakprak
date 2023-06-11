@@ -16,14 +16,14 @@ Company.init(
             defaultValue: "",
         },
         description: {
-            type: DataTypes.STRING(30),
+            type: DataTypes.STRING(255),
             allowNull: false,
             defaultValue: "",
         },
         category: {
             type: DataTypes.STRING(30),
             allowNull: false,
-            defaultValue: "ИП",
+            defaultValue: "none",
         },
         country: {
             type: DataTypes.STRING(30),

@@ -6,6 +6,7 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import traineeRoute from "./api/trainee/route.js";
 import resumeRoute from "./api/resume/route.js";
+import companyRoute from "./api/company/route.js";
 
 // parameters
 const PORT = 8080;
@@ -27,8 +28,8 @@ app.use(cookieParser());
 
 // routes
 app.use("/api/trainee", traineeRoute);
-app.use("/api/resume", resumeRoute);
 app.use("/api/company", companyRoute);
+app.use("/api/resume", resumeRoute);
 
 db.sync();
 
