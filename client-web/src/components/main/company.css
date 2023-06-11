@@ -1,0 +1,29 @@
+/* Company style */
+
+.companyPost {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffff;
+    max-width: 800px;
+    width: 75%;
+    padding: 16px;
+    margin: 16px auto;
+    gap: 16px;
+    font-size: 20px;
+    overflow: scroll;
+    border-radius: 16px;
+}
+.companyPost h1 {
+    margin: 0px;
+    font-weight: 500;
+    font-size: 36px;
+}
+
+.companyPost h2 {
+    margin: 0px;
+}
+
+.companyPost .btn {
+    width: 250px;
+    align-self: flex-end;
+}

@@ -45,9 +45,10 @@ const Resume = () => {
     }
 
     return (
-        <div>
-            <ResumeEdit myResume={myResume.data} myResumeEducation={educationData} />
-        </div>
+        <ResumeEdit
+            myResume={myResume.data}
+            myResumeEducation={educationData}
+        />
     );
 };
 

@@ -62,7 +62,7 @@ const ResumeEdit = ({ myResume, myResumeEducation }) => {
                 <input
                     name="languages"
                     type="text"
-                    placeholder="Языки, например якутский или русский языки"
+                    placeholder="Языки, например якутский, русский или английский"
                     value={languages}
                     onChange={(e) => setLanguages(e.target.value)}
                 />
