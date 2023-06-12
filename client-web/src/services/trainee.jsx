@@ -1,6 +1,6 @@
 import api from "./instance";
 
-export const ApiCurrentUserData = async (data) => {
+export const ApiCurrentUserData = async () => {
     return api
         .get("/trainee/currentUser")
         .then((response) => {

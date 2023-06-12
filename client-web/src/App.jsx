@@ -44,7 +44,10 @@ const App = () => {
                             />
                         }
                     />
-                    <Route path="/profile" element={<Profile />} />
+                    <Route
+                        path="/profile"
+                        element={<Profile roleCookie={roleCookie} />}
+                    />
                     <Route path="/resume" element={<Resume />} />
                     <Route path="/about" element={<About />} />
                     <Route path="*" element={<NotFound />} />

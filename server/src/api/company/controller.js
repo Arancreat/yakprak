@@ -9,7 +9,13 @@ const tokenMaxAge = 1000 * 60 * 60;
 const controller = {
     getAll: async (req, res) => {
         await Company.findAll({
-            attributes: ["id", "companyName", "description", "category", "avatar"],
+            attributes: [
+                "id",
+                "companyName",
+                "description",
+                "category",
+                "avatar",
+            ],
         })
             .then((response) => {
                 return res.status(200).json(response);
@@ -38,11 +44,15 @@ const controller = {
             });
             if (tokenPayload) {
                 if (tokenPayload.role == "company") {
-                    await Company.findByPk(tokenPayload.user).then((response) => {
-                        return res.status(200).json(response);
-                    });
-                }
-                else return res.status(401).json({ meessage: "Incorrect token" });
+                    await Company.findByPk(tokenPayload.user).then(
+                        (response) => {
+                            return res.status(200).json(response);
+                        }
+                    );
+                } else
+                    return res
+                        .status(401)
+                        .json({ meessage: "Incorrect token" });
             } else return res.status(401).json({ meessage: "Incorrect token" });
         } catch (error) {
             error = ApiError.InternalServerError(
@@ -109,7 +119,7 @@ const controller = {
             }
 
             const token = await createToken(company.id, "company", tokenMaxAge);
-            
+
             res.cookie("jwt", token, {
                 maxAge: tokenMaxAge,
                 sameSite: "Strict",
@@ -147,6 +157,7 @@ const controller = {
                 description: data.description,
                 category: data.category,
                 phone: data.phone,
+                public: data.public,
             },
             { where: { id: data.id } }
         )

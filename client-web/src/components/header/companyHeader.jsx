@@ -23,6 +23,7 @@ const CompanyHeader = () => {
                                     <a
                                         onClick={() => {
                                             Cookies.remove("jwt");
+                                            Cookies.remove("role");
                                             window.location.replace("/");
                                         }}
                                     >

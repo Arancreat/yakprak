@@ -6,9 +6,9 @@ const Dashboard = () => {
     const [searchNameString, setSearchNameString] = useState("");
 
     return (
-        <>
+        <div className="post">
             Dashboard in progress
-        </>
+        </div>
     );
 };
 

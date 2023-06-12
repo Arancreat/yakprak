@@ -1,32 +1,22 @@
 import React from "react";
-import { useQuery } from "@tanstack/react-query";
-import { ApiCurrentUserData } from "../services/trainee";
-import ProfileComponent from "../components/profile/profile";
+import PropTypes from "prop-types";
+import TraineeProfileComponent from "../components/profile/traineeProfile";
+import CompanyProfileComponent from "../components/profile/companyProfile";
 
-const Profile = () => {
-    const {
-        isLoading,
-        isError,
-        data: currentUser,
-        error,
-    } = useQuery({
-        queryKey: ["currentUser"],
-        queryFn: ApiCurrentUserData,
-    });
-
-    if (isLoading) {
-        return <span> Loading... </span>;
-    }
-
-    if (isError) {
-        return <span> Error: {error.message} </span>;
-    }
-
+const Profile = ({ roleCookie }) => {
     return (
         <>
-            <ProfileComponent currentUser={currentUser.data} />
+            {roleCookie == "company" ? (
+                <CompanyProfileComponent />
+            ) : (
+                <TraineeProfileComponent />
+            )}
         </>
     );
+};
+
+Profile.propTypes = {
+    roleCookie: PropTypes.string,
 };
 
 export default Profile;

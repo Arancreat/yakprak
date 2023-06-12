@@ -33,6 +33,15 @@
     margin: 0px 0px 16px 0px;
 }
 
+.profileSettingsForm .column select {
+    margin: 0px 0px 16px 0px;
+}
+
+.profileSettingsForm .column textarea {
+    margin: 0px 0px 16px 0px;
+    padding: 11px;
+}
+
 .profileSettingsForm fieldset {
     border: solid 1px #ff6347;
     border-radius: 8px;
@@ -45,6 +54,8 @@
     padding: 4px;
     gap: 8px;
 }
+
+
 
 .profileSettingsForm .avatarWrapper {
     display: flex;
