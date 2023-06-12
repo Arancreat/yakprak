@@ -37,9 +37,12 @@ const controller = {
                 return response;
             });
             if (tokenPayload) {
-                await Company.findByPk(tokenPayload.user).then((response) => {
-                    return res.status(200).json(response);
-                });
+                if (tokenPayload.role == "company") {
+                    await Company.findByPk(tokenPayload.user).then((response) => {
+                        return res.status(200).json(response);
+                    });
+                }
+                else return res.status(401).json({ meessage: "Incorrect token" });
             } else return res.status(401).json({ meessage: "Incorrect token" });
         } catch (error) {
             error = ApiError.InternalServerError(
@@ -56,7 +59,6 @@ const controller = {
 
             const newCompany = await Company.create({
                 companyName: data.companyName,
-                description: data.description,
                 email: data.email,
                 hashedPassword: hashedPassword,
             });
@@ -66,8 +68,12 @@ const controller = {
                 "company",
                 tokenMaxAge
             );
+
             res.cookie("jwt", token, {
-                httpOnly: true,
+                maxAge: tokenMaxAge,
+                sameSite: "Strict",
+            });
+            res.cookie("role", "company", {
                 maxAge: tokenMaxAge,
                 sameSite: "Strict",
             });
@@ -103,7 +109,12 @@ const controller = {
             }
 
             const token = await createToken(company.id, "company", tokenMaxAge);
+            
             res.cookie("jwt", token, {
+                maxAge: tokenMaxAge,
+                sameSite: "Strict",
+            });
+            res.cookie("role", "company", {
                 maxAge: tokenMaxAge,
                 sameSite: "Strict",
             });

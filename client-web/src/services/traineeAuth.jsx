@@ -1,3 +1,4 @@
+import Cookies from "js-cookie";
 import api from "./instance";
 
 export const ApiSignup = async (data) => {

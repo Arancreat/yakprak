@@ -3,18 +3,19 @@ import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Cookies from "js-cookie";
 import Header from "./components/header";
-import TraineeHeader from "./components/header/traineeHeader";
 import Footer from "./components/footer";
 import Home from "./pages/home";
 import About from "./pages/about";
 import Landing from "./pages/landing";
 import AuthModal from "./components/modals/auth";
 import Profile from "./pages/profile";
-import NotFound from "./pages/notFound";
+import NotFound from "./pages/errors/notFound";
+import AccessDenied from "./pages/errors/accessDenied";
 import Resume from "./pages/resume";
 
 const App = () => {
     const jwtCookie = Cookies.get("jwt");
+    const roleCookie = Cookies.get("role");
 
     const [signup, setSignup] = useState(false);
     const [openAuthModal, setOpenAuthModal] = useState(false);
@@ -22,17 +23,14 @@ const App = () => {
     return (
         <>
             <main>
-                {jwtCookie ? (
-                    <TraineeHeader />
-                ) : (
-                    <Header
-                        open={() => {
-                            setSignup(false);
-                            setOpenAuthModal(true);
-                        }}
-                    />
-                )}
-
+                <Header
+                    jwtCookie={jwtCookie}
+                    roleCookie={roleCookie}
+                    open={() => {
+                        setSignup(false);
+                        setOpenAuthModal(true);
+                    }}
+                />
                 <Routes>
                     {jwtCookie ? (
                         <>
@@ -55,6 +53,7 @@ const App = () => {
                     )}
                     <Route path="/about" element={<About />} />
                     <Route path="*" element={<NotFound />} />
+                    <Route path="/401" element={<AccessDenied />} />
                 </Routes>
                 <AuthModal
                     open={openAuthModal}

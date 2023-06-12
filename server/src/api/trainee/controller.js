@@ -39,9 +39,12 @@ const controller = {
                 return response;
             });
             if (tokenPayload) {
-                await Trainee.findByPk(tokenPayload.user).then((response) => {
-                    return res.status(200).json(response);
-                });
+                if (tokenPayload.role == "trainee") {
+                    await Trainee.findByPk(tokenPayload.user).then((response) => {
+                        return res.status(200).json(response);
+                    });
+                }
+                else return res.status(401).json({ meessage: "Incorrect token" });
             } else return res.status(401).json({ meessage: "Incorrect token" });
         } catch (error) {
             error = ApiError.InternalServerError(
@@ -76,8 +79,12 @@ const controller = {
                 "trainee",
                 tokenMaxAge
             );
+
             res.cookie("jwt", token, {
-                httpOnly: true,
+                maxAge: tokenMaxAge,
+                sameSite: "Strict",
+            });
+            res.cookie("role", "trainee", {
                 maxAge: tokenMaxAge,
                 sameSite: "Strict",
             });
@@ -113,7 +120,12 @@ const controller = {
             }
 
             const token = await createToken(trainee.id, "trainee", tokenMaxAge);
+            
             res.cookie("jwt", token, {
+                maxAge: tokenMaxAge,
+                sameSite: "Strict",
+            });
+            res.cookie("role", "trainee", {
                 maxAge: tokenMaxAge,
                 sameSite: "Strict",
             });

@@ -3,13 +3,13 @@ import "./header.css";
 import React from "react";
 import { Link } from "react-router-dom";
 
-const TraineeHeader = () => {
+const CompanyHeader = () => {
     return (
         <header>
             <div className="nav_wrap">
                 <nav className="nav">
                     <Link to="/" className="site_title">
-                        YakPrak.Студент
+                        YakPrak.Компания
                     </Link>
                     <ul>
                         <li>
@@ -38,4 +38,4 @@ const TraineeHeader = () => {
     );
 };
 
-export default TraineeHeader;
+export default CompanyHeader;
