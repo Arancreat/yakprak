@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import "./profileCard.css";
 import { useNavigate } from "react-router-dom";
 
-const ProfileCard = ({ currentUser, toggleEdit }) => {
+const TraineeProfileCard = ({ currentUser, toggleEdit }) => {
     const navigate = useNavigate();
 
     const navigateToResume = () => {
@@ -77,9 +77,9 @@ const ProfileCard = ({ currentUser, toggleEdit }) => {
     );
 };
 
-ProfileCard.propTypes = {
+TraineeProfileCard.propTypes = {
     currentUser: PropTypes.object,
     toggleEdit: PropTypes.func,
 };
 
-export default ProfileCard;
+export default TraineeProfileCard;

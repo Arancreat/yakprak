@@ -6,7 +6,7 @@ import "./profileCardSettings.css";
 import camera from "../../media/camera.svg";
 import { ApiPostAvatar, ApiPutProfileData } from "../../services/trainee";
 
-const ProfileCardSettings = ({ currentUser, toggleEdit }) => {
+const TraineeProfileCardSettings = ({ currentUser, toggleEdit }) => {
     const [name, setName] = useState(currentUser?.firstName);
     const [surname, setSurname] = useState(currentUser?.lastName);
     const [patronymic, setPatronymic] = useState(currentUser?.patronymic);
@@ -180,16 +180,7 @@ const ProfileCardSettings = ({ currentUser, toggleEdit }) => {
 
                     <fieldset>
                         <legend>Ваш пол</legend>
-                        <label>
-                            <input
-                                type="radio"
-                                name="gender"
-                                value="unknown"
-                                checked={gender === "unknown"}
-                                onChange={onChangeGender}
-                            />
-                            Не указывать
-                        </label>
+                        
                         <label>
                             <input
                                 type="radio"
@@ -255,9 +246,9 @@ const ProfileCardSettings = ({ currentUser, toggleEdit }) => {
     );
 };
 
-ProfileCardSettings.propTypes = {
+TraineeProfileCardSettings.propTypes = {
     currentUser: PropTypes.object,
     toggleEdit: PropTypes.func,
 };
 
-export default ProfileCardSettings;
+export default TraineeProfileCardSettings;

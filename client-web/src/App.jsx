@@ -6,7 +6,6 @@ import Header from "./components/header";
 import Footer from "./components/footer";
 import Home from "./pages/home";
 import About from "./pages/about";
-import Landing from "./pages/landing";
 import AuthModal from "./components/modals/auth";
 import Profile from "./pages/profile";
 import NotFound from "./pages/errors/notFound";
@@ -32,25 +31,21 @@ const App = () => {
                     }}
                 />
                 <Routes>
-                    {jwtCookie ? (
-                        <>
-                            <Route path="/" element={<Home />} />
-                            <Route path="/profile" element={<Profile />} />
-                            <Route path="/resume" element={<Resume />} />
-                        </>
-                    ) : (
-                        <Route
-                            path="/"
-                            element={
-                                <Landing
-                                    open={() => {
-                                        setSignup(true);
-                                        setOpenAuthModal(true);
-                                    }}
-                                />
-                            }
-                        />
-                    )}
+                    <Route
+                        path="/"
+                        element={
+                            <Home
+                                jwtCookie={jwtCookie}
+                                roleCookie={roleCookie}
+                                open={() => {
+                                    setSignup(true);
+                                    setOpenAuthModal(true);
+                                }}
+                            />
+                        }
+                    />
+                    <Route path="/profile" element={<Profile />} />
+                    <Route path="/resume" element={<Resume />} />
                     <Route path="/about" element={<About />} />
                     <Route path="*" element={<NotFound />} />
                     <Route path="/401" element={<AccessDenied />} />

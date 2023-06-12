@@ -1,7 +1,7 @@
 import "./landing.css";
 import React from "react";
 import PropTypes from "prop-types";
-import ImagePlaceholder from "../media/img-placeholder.png";
+import ImagePlaceholder from "../../media/img-placeholder.png";
 
 const Landing = ({ open }) => {
     return (

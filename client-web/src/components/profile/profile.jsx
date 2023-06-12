@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import ProfileCard from "./profileCard";
-import ProfileCardSettings from "./profileCardSettings";
+import TraineeProfileCard from "./traineeProfileCard";
+import TraineeProfileCardSettings from "./traineeProfileCardSettings";
 
 const ProfileComponent = ({ currentUser }) => {
     const [editMode, setEditMode] = useState(false);
@@ -9,12 +9,12 @@ const ProfileComponent = ({ currentUser }) => {
     return (
         <div>
             {editMode ? (
-                <ProfileCardSettings
+                <TraineeProfileCardSettings
                     currentUser={currentUser}
                     toggleEdit={() => setEditMode(!editMode)}
                 />
             ) : (
-                <ProfileCard
+                <TraineeProfileCard
                     currentUser={currentUser}
                     toggleEdit={() => setEditMode(!editMode)}
                 />
