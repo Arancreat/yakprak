@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
+import { ApiSendResume } from "../../../services/sendedResume";
 import "./company.css";
 
-const Company = ({ company }) => {
+const Company = ({ company, resumeId }) => {
+    const [buttonState, setButtonState] = useState(false);
+
+    const handleOnClick = () => {
+        setButtonState(true);
+        ApiSendResume({companyId: company.id, resumeId: resumeId})
+    };
+
     return (
         <div className="companyPost">
             <div className="left">
@@ -14,7 +22,15 @@ const Company = ({ company }) => {
                     src={"http://localhost:8080" + company.avatar}
                     alt="company-avatar"
                 />
-                <button className="btn">Отправить резюме</button>
+                {buttonState ? (
+                    <button className="btn" disabled={true}>
+                        Резюме отправлено
+                    </button>
+                ) : (
+                    <button className="btn" onClick={(e) => handleOnClick()}>
+                        Отправить резюме
+                    </button>
+                )}
             </div>
         </div>
     );
@@ -22,6 +38,7 @@ const Company = ({ company }) => {
 
 Company.propTypes = {
     company: PropTypes.object,
+    resumeId: PropTypes.string,
 };
 
 export default Company;
