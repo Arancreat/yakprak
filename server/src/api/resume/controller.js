@@ -1,11 +1,21 @@
 import ApiError from "../exception.js";
-import Resume from "./resume.model.js";
-import ResumeEducation from "./resumeEducation.model.js";
-import {  decodeToken } from "../jwt/service.js";
+import Resume from "./model.js";
+import { decodeToken } from "../jwt/service.js";
 
 const controller = {
     getAll: async (req, res) => {
         await Resume.findAll()
+            .then((response) => {
+                return res.status(200).json(response);
+            })
+            .catch((error) => {
+                error = ApiError.InternalServerError(error.stack);
+                return res.status(error.status).json(error.data);
+            });
+    },
+    getByResumeId: async (req, res) => {
+        const resumeId = req.params.resumeId;
+        await Resume.findByPk(resumeId)
             .then((response) => {
                 return res.status(200).json(response);
             })
@@ -34,17 +44,6 @@ const controller = {
             return res.status(error.status).json(error.data);
         }
     },
-    getEducationByResumeId: async (req, res) => {
-        const resumeId = req.params.resumeId;
-        await ResumeEducation.findAll({ where: { resumeId: resumeId } })
-            .then((response) => {
-                return res.status(200).json(response);
-            })
-            .catch((error) => {
-                error = ApiError.InternalServerError(error.stack);
-                return res.status(error.status).json(error.data);
-            });
-    },
     putUpdate: async (req, res) => {
         const data = req.body;
         try {
@@ -55,21 +54,12 @@ const controller = {
                     pros: data.pros,
                     cons: data.cons,
                     languages: data.languages,
-                },
-                { where: { id: data.id } }
-            );
-
-            await ResumeEducation.update(
-                {
                     stage: data.stage,
-                    institute: data.institute,
-                    faculty: data.faculty,
+                    institution: data.institution,
                     speciality: data.speciality,
                     graduationYear: data.graduationYear,
                 },
-                {
-                    where: { resumeId: data.id },
-                }
+                { where: { id: data.id } }
             );
 
             return res

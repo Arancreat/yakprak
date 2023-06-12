@@ -9,7 +9,7 @@ const tokenMaxAge = 1000 * 60 * 60;
 const controller = {
     getAll: async (req, res) => {
         await Company.findAll({
-            attributes: ["id", "email"],
+            attributes: ["id", "companyName", "description", "category", "avatar"],
         })
             .then((response) => {
                 return res.status(200).json(response);
