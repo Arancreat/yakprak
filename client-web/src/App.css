@@ -121,3 +121,22 @@ textarea:hover {
 textarea:focus {
     background-color: #fff;
 }
+
+select {
+    display: flex;
+    background-color: #f2f3f2;
+    border: solid 1px;
+    border-color: #ff6347;
+    border-radius: 8px;
+    font-size: inherit;
+    font-family: inherit;
+    padding: 7px;
+}
+
+select:hover {
+    background-color: #fff;
+}
+
+select:focus {
+    background-color: #fff;
+}

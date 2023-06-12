@@ -1,10 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import ResumeEdit from "../components/resume/resumeEdit";
-import {
-    ApiGetCurrentTraineeResume,
-    ApiGetEducationData,
-} from "../services/resume";
+import { ApiGetCurrentTraineeResume } from "../services/resume";
 
 const Resume = () => {
     const {
@@ -17,25 +14,6 @@ const Resume = () => {
         queryFn: ApiGetCurrentTraineeResume,
     });
 
-    const [educationData, setEducationData] = useState();
-
-    const fetchEducationData = useCallback(async (resumeId) => {
-        const data = await ApiGetEducationData(resumeId).then((res) => {
-            return res;
-        });
-        setEducationData(data.data);
-    });
-
-    useEffect(() => {
-        if (myResume?.data.id) fetchEducationData(myResume?.data.id);
-    }, [myResume]);
-
-    useEffect(() => {
-        if (educationData?.length > 0) {
-            console.log(educationData);
-        }
-    }, [educationData]);
-
     if (myResumeIsLoading) {
         return <span> Loading... </span>;
     }
@@ -44,12 +22,7 @@ const Resume = () => {
         return <span> Error: {myResumeError.message} </span>;
     }
 
-    return (
-        <ResumeEdit
-            myResume={myResume.data}
-            myResumeEducation={educationData}
-        />
-    );
+    return <ResumeEdit myResume={myResume.data} />;
 };
 
 export default Resume;

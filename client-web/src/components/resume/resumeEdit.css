@@ -39,3 +39,19 @@
     margin-top: 16px;
     width: 50%;
 }
+
+.resumeEdit .resumeEditForm .education {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+.resumeEdit .resumeEditForm .education input {
+    margin-top: 16px;
+    width: 48%;
+}
+
+.resumeEdit .resumeEditForm .education select {
+    margin-top: 16px;
+    width: 48%;
+}

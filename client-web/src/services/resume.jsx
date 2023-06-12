@@ -20,29 +20,29 @@ export const ApiGetCurrentTraineeResume = async () => {
         });
 };
 
-export const ApiGetEducationData = async (resumeId) => {
-    return api
-        .get(`/resume/education/${resumeId}`)
-        .then((response) => {
-            return response;
-        })
-        .catch((error) => {
-            if (error.response) {
-                if (error.response.status == 401) {
-                    return error.response.status;
-                }
-                return error.response.status;
-            } else if (error.request) {
-                return 503;
-            } else {
-                return 400;
-            }
-        });
-};
+// export const ApiGetEducationData = async (resumeId) => {
+//     return api
+//         .get(`/resume/education/${resumeId}`)
+//         .then((response) => {
+//             return response;
+//         })
+//         .catch((error) => {
+//             if (error.response) {
+//                 if (error.response.status == 401) {
+//                     return error.response.status;
+//                 }
+//                 return error.response.status;
+//             } else if (error.request) {
+//                 return 503;
+//             } else {
+//                 return 400;
+//             }
+//         });
+// };
 
-export const ApiPutProfileData = async (data) => {
+export const ApiPutResumeData = async (data) => {
     return api
-        .put("/trainee/update", data)
+        .put("/resume/update", data)
         .then((response) => {
             return response.data;
         })
