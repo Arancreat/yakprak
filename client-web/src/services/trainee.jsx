@@ -9,7 +9,7 @@ export const ApiCurrentUserData = async (data) => {
         .catch((error) => {
             if (error.response) {
                 if (error.response.status == 401) {
-                    window.location.reload(false);
+                    window.location.assign("/401");
                 }
                 return error.response.status;
             } else if (error.request) {
