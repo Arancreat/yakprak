@@ -57,6 +57,24 @@ main {
     top: 2px;
 }
 
+/* Pagination button style */
+
+.companyLoad {
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+    width: 100%;
+    align-items: center;
+}
+
+.companyLoad .btn {
+    display: flex;
+    margin: 32px;
+    padding: 12px;
+    width: 260px;
+    align-content: center;
+}
+
 /* Cancel button style */
 .btnCancel {
     display: flex;

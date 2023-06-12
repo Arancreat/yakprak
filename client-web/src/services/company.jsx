@@ -1,6 +1,6 @@
 import api from "./instance";
 
-export const ApiCurrentUserData = async () => {
+export const ApiGetAllCompanies = async () => {
     return api
         .get("/company/all")
         .then((response) => {
@@ -20,7 +20,27 @@ export const ApiCurrentUserData = async () => {
         });
 };
 
-export const ApiCurrentCompanyData = async (data) => {
+export const ApiGetPage = async ({pageParam = 0}) => {
+    return api
+        .get(`/company/paginated?page=${pageParam}`)
+        .then((response) => {
+            return {data: response.data, nextPage: pageParam + 1 };
+        })
+        .catch((error) => {
+            if (error.response) {
+                if (error.response.status == 401) {
+                    window.location.assign("/401");
+                }
+                return error.response.status;
+            } else if (error.request) {
+                return 503;
+            } else {
+                return 400;
+            }
+        });
+};
+
+export const ApiCurrentCompanyData = async () => {
     return api
         .get("/company/currentUser")
         .then((response) => {

@@ -5,6 +5,7 @@ import requireAuth from "../jwt/middleware.js";
 const companyRoute = Router();
 
 companyRoute.get("/all", controller.getAll);
+companyRoute.get("/paginated", controller.getPaginated);
 // companyRoute.get("/id/:id", requireAuth, controller.getById);
 companyRoute.get("/currentUser", requireAuth, controller.getCurrentUser);
 companyRoute.post("/signup", controller.postSignup);

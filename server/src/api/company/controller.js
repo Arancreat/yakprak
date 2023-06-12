@@ -16,6 +16,37 @@ const controller = {
                 "category",
                 "avatar",
             ],
+            where: { public: true },
+        })
+            .then((response) => {
+                return res.status(200).json(response);
+            })
+            .catch((error) => {
+                error = ApiError.InternalServerError(error.stack);
+                return res.status(error.status).json(error.data);
+            });
+    },
+    getPaginated: async (req, res) => {
+        const pageAsNumber = Number.parseInt(req.query.page);
+        const size = 3;
+
+        let page = 0;
+
+        if(!Number.isNaN(pageAsNumber) && pageAsNumber > 0) {
+            page = pageAsNumber
+        }
+
+        await Company.findAll({
+            limit: size,
+            offset: page * size,
+            attributes: [
+                "id",
+                "companyName",
+                "description",
+                "category",
+                "avatar",
+            ],
+            where: { public: true },
         })
             .then((response) => {
                 return res.status(200).json(response);
