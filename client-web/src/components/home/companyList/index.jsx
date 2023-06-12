@@ -91,9 +91,26 @@ const CompanyList = () => {
 
             {companies.pages.map((group, i) => (
                 <Fragment key={i}>
-                    {group.data.map((company, i) => (
-                        <Company company={company} key={i} />
-                    ))}
+                    {group.data
+                        .filter((item) => {
+                            return searchCategoryString == " "
+                                ? item
+                                : item.category
+                                      .toLowerCase()
+                                      .includes(
+                                          searchCategoryString.toLowerCase()
+                                      );
+                        })
+                        .filter((item) => {
+                            return searchCategoryString == " "
+                                ? item
+                                : item.companyName
+                                      .toLowerCase()
+                                      .includes(searchNameString.toLowerCase());
+                        })
+                        .map((company, i) => (
+                            <Company company={company} key={i} />
+                        ))}
                 </Fragment>
             ))}
 
