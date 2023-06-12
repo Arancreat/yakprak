@@ -1,17 +1,27 @@
 import "../modal.css";
 import imagePlaceholder from "../../../media/img-placeholder.png";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import Login from "./login";
-import Signup from "./signup";
+import TraineeAuth from "./traineeAuth";
+import CompanyAuth from "./companyAuth";
 
 const AuthModal = ({ open, signup, onClose, onChangeAuth }) => {
+    const [activeTab, setActiveTab] = useState("student");
+
     useEffect(() => {
         if (open) document.body.style.overflow = "hidden";
         else document.body.style.overflow = "unset";
     }, [open]);
 
     if (!open) return null;
+
+    const OnClickStudentTab = () => {
+        setActiveTab("student");
+    };
+
+    const OnClickCompanyTab = () => {
+        setActiveTab("company");
+    };
 
     return (
         <div onClick={onClose} className="modalOverlay">
@@ -23,17 +33,33 @@ const AuthModal = ({ open, signup, onClose, onChangeAuth }) => {
             >
                 <img src={imagePlaceholder} alt="authPic" />
                 <div className="modalRight">
+                    <ul className="tabs">
+                        <li
+                            className={activeTab === "student" ? "active" : ""}
+                            onClick={OnClickStudentTab}
+                        >
+                            Студент
+                        </li>
+                        <li
+                            className={activeTab === "company" ? "active" : ""}
+                            onClick={OnClickCompanyTab}
+                        >
+                            Компания
+                        </li>
+                    </ul>
                     <p onClick={onClose} className="modalCloseBtn">
                         X
                     </p>
-                    {signup ? (
-                        <Signup
-                            onChangeAuth={() => onChangeAuth()}
+                    {activeTab == "student" ? (
+                        <TraineeAuth
+                            signup={signup}
+                            onChangeAuth={onChangeAuth}
                             onClose={onClose}
                         />
                     ) : (
-                        <Login
-                            onChangeAuth={() => onChangeAuth()}
+                        <CompanyAuth
+                            signup={signup}
+                            onChangeAuth={onChangeAuth}
                             onClose={onClose}
                         />
                     )}

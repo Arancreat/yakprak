@@ -2,9 +2,8 @@ import api from "./instance";
 
 export const ApiSignup = async (data) => {
     return api
-        .post("/trainee/signup", {
-            firstName: data.firstName,
-            lastName: data.lastName,
+        .post("/company/signup", {
+            companyName: data.companyName,
             email: data.email,
             password: data.password,
         })
@@ -24,7 +23,7 @@ export const ApiSignup = async (data) => {
 
 export const ApiLogin = async (data) => {
     return api
-        .post("/trainee/login", {
+        .post("/company/login", {
             email: data.email,
             password: data.password,
         })

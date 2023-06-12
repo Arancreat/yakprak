@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { ApiLogin } from "../../../services/traineeAuth";
+import { ApiLogin } from "../../../services/companyAuth";
 
-const Login = ({ onChangeAuth, onClose }) => {
+const CompanyLogin = ({ onChangeAuth, onClose }) => {
     const [email, setEmail] = useState("");
     const [pass, setPass] = useState("");
     const [serverError, setServerError] = useState("");
@@ -29,27 +29,25 @@ const Login = ({ onChangeAuth, onClose }) => {
 
     return (
         <>
-            <div className="modalContent">
-                <form className="modalForm" onSubmit={onSubmitLogin}>
-                    <h2>Авторизация</h2>
-                    <div className="modalError">{serverError}</div>
-                    <input
-                        id="loginEmail"
-                        type="email"
-                        placeholder="Почта"
-                        onChange={(e) => setEmail(e.target.value)}
-                    ></input>
-                    <input
-                        id="loginPassword"
-                        type="password"
-                        placeholder="Пароль"
-                        onChange={(e) => setPass(e.target.value)}
-                    ></input>
-                    <button id="loginButton" type="submit" className="btn">
-                        Войти
-                    </button>
-                </form>
-            </div>
+            <form className="modalForm" onSubmit={onSubmitLogin}>
+                <h2>Войти как компания</h2>
+                <div className="modalError">{serverError}</div>
+                <input
+                    id="loginEmail"
+                    type="email"
+                    placeholder="Почта компании"
+                    onChange={(e) => setEmail(e.target.value)}
+                ></input>
+                <input
+                    id="loginPassword"
+                    type="password"
+                    placeholder="Пароль"
+                    onChange={(e) => setPass(e.target.value)}
+                ></input>
+                <button id="loginButton" type="submit" className="btn">
+                    Войти
+                </button>
+            </form>
             <div className="modalLinkContainer">
                 Нет аккаунта?
                 <p className="modalLink" onClick={onChangeAuth}>
@@ -60,9 +58,9 @@ const Login = ({ onChangeAuth, onClose }) => {
     );
 };
 
-Login.propTypes = {
+CompanyLogin.propTypes = {
     onChangeAuth: PropTypes.func,
     onClose: PropTypes.func,
 };
 
-export default Login;
+export default CompanyLogin;

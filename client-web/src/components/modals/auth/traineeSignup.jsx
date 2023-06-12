@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import validator from "validator";
 import { ApiSignup } from "../../../services/traineeAuth";
 
-const Signup = ({ onChangeAuth, onClose }) => {
+const TraineeSignup = ({ onChangeAuth, onClose }) => {
     const [name, setName] = useState("");
     const [surname, setSurname] = useState("");
     const [email, setEmail] = useState("");
@@ -39,11 +39,11 @@ const Signup = ({ onChangeAuth, onClose }) => {
 
             if (surname.length < 30) setSurnameError("");
             else {
-                setSurnameError("Ваше фамилие слишком длинное");
+                setSurnameError("Ваша фамилия слишком длинная");
                 error = true;
             }
         } else {
-            setSurnameError("Введите фамилие");
+            setSurnameError("Введите фамилию");
             error = true;
         }
 
@@ -67,11 +67,14 @@ const Signup = ({ onChangeAuth, onClose }) => {
 
         if (error) return;
 
-        let status = await ApiSignup({ firstName: name, lastName: surname, email: email, password: pass }).then(
-            (res) => {
-                return res;
-            }
-        );
+        let status = await ApiSignup({
+            firstName: name,
+            lastName: surname,
+            email: email,
+            password: pass,
+        }).then((res) => {
+            return res;
+        });
         if (status == 200) {
             setServerError("");
             onClose();
@@ -86,59 +89,56 @@ const Signup = ({ onChangeAuth, onClose }) => {
 
     return (
         <>
-            <div className="modalContent" autoComplete="false">
-                <form className="modalForm" onSubmit={onSubmitSignup}>
-                    <h2>Регистрация</h2>
+            <form className="modalForm" onSubmit={onSubmitSignup}>
+                <h2>Регистрация студента</h2>
 
-                    <div className="modalError">{serverError}</div>
+                <div className="modalError">{serverError}</div>
+                <div className="modalError">{nameError}</div>
+                <input
+                    name="signupName"
+                    type="text"
+                    placeholder="Имя"
+                    onChange={(e) => setName(e.target.value)}
+                ></input>
 
-                    <input
-                        name="signupName"
-                        type="text"
-                        placeholder="Имя"
-                        onChange={(e) => setName(e.target.value)}
-                    ></input>
-                    <div className="modalError">{nameError}</div>
+                <div className="modalError">{surnameError}</div>
+                <input
+                    name="signupSurname"
+                    type="text"
+                    placeholder="Фамилия"
+                    onChange={(e) => setSurname(e.target.value)}
+                ></input>
 
-                    <input
-                        name="signupSurname"
-                        type="text"
-                        placeholder="Фамилия"
-                        onChange={(e) => setSurname(e.target.value)}
-                    ></input>
-                    <div className="modalError">{surnameError}</div>
+                <div className="modalError"> {emailError}</div>
+                <input
+                    name="signupEmail"
+                    type="text"
+                    placeholder="Почта"
+                    onChange={(e) => setEmail(e.target.value)}
+                    autoComplete="new-mail"
+                ></input>
 
-                    <input
-                        name="signupEmail"
-                        type="text"
-                        placeholder="Почта"
-                        onChange={(e) => setEmail(e.target.value)}
-                        autoComplete="new-mail"
-                    ></input>
-                    <div className="modalError"> {emailError}</div>
+                <div className="modalError">{passError}</div>
+                <input
+                    name="signupPassword"
+                    type="password"
+                    placeholder="Пароль"
+                    onChange={(e) => setPass(e.target.value)}
+                    autoComplete="new-password"
+                ></input>
 
-                    <input
-                        name="signupPassword"
-                        type="password"
-                        placeholder="Пароль"
-                        onChange={(e) => setPass(e.target.value)}
-                        autoComplete="new-password"
-                    ></input>
-                    <div className="modalError">{passError}</div>
+                <div className="modalError">{confirmPassError}</div>
+                <input
+                    name="signupConfirmPassword"
+                    type="password"
+                    placeholder="Подтвердите пароль"
+                    onChange={(e) => setConfirmPass(e.target.value)}
+                ></input>
 
-                    <input
-                        name="signupConfirmPassword"
-                        type="password"
-                        placeholder="Подтвердите пароль"
-                        onChange={(e) => setConfirmPass(e.target.value)}
-                    ></input>
-                    <div className="modalError">{confirmPassError}</div>
-
-                    <button name="signupButton" type="submit" className="btn">
-                        Зарегистрироваться
-                    </button>
-                </form>
-            </div>
+                <button name="signupButton" type="submit" className="btn">
+                    Зарегистрироваться
+                </button>
+            </form>
             <div className="modalLinkContainer">
                 Есть аккаунт?
                 <p className="modalLink" onClick={() => onChangeAuth()}>
@@ -149,9 +149,9 @@ const Signup = ({ onChangeAuth, onClose }) => {
     );
 };
 
-Signup.propTypes = {
+TraineeSignup.propTypes = {
     onChangeAuth: PropTypes.func,
     onClose: PropTypes.func,
 };
 
-export default Signup;
+export default TraineeSignup;

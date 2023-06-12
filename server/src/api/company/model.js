@@ -65,6 +65,11 @@ Company.init(
             allowNull: false,
             defaultValue: "/files/avatar_default.jpg",
         },
+        public: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: false,
+        },
     },
     {
         sequelize: db,

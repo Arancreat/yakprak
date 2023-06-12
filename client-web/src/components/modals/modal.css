@@ -19,7 +19,7 @@
 
 .modalContainer img {
     min-width: 150px;
-    min-height: 466px;
+    min-height: 550px;
     margin: 0;
     border-radius: 16px 0 0 16px;
     object-fit: cover;
@@ -28,16 +28,56 @@
 
 .modalRight {
     width: 100%;
-    padding: 32px;
+    padding: 16px 16px 16px 16px;
 }
 
-.modalCloseBtn {
+.modalRight ul.tabs {
+    width: 70%;
+    margin: 0 auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #ff6347;
+    border-radius: 2rem;
+    padding-left: 0px;
+    @media (max-width: 768px) {
+        width: 90%;
+    }
+}
+
+.modalRight ul.tabs li {
+    width: 50%;
+    padding: 8px;
+    list-style: none;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.5s;
+    border-bottom-left-radius: 2rem;
+    border-top-left-radius: 2rem;
+}
+
+.modalRight ul.tabs li:nth-child(2) {
+    border-radius: 0;
+    border-bottom-right-radius: 2rem;
+    border-top-right-radius: 2rem;
+}
+
+.modalRight ul.tabs li:hover {
+    background: rgba(255, 63, 47, 0.5);
+}
+
+.modalRight ul.tabs li.active {
+    background: #ff6347;
+    color: #fff;
+}
+
+.modalRight .modalCloseBtn {
     position: fixed;
     background-color: #ff6347;
     color: #fff;
     border-radius: 4px;
-    padding: 2px 8px;
-    top: 14px;
+    padding: 9px 15px;
+    top: 16px;
     right: 16px;
     transition: all 0.3s;
     -webkit-user-select: none;
@@ -54,27 +94,27 @@
 
 .modalCloseBtn:active {
     background-color: #c0392b;
-    top: 16px;
+    top: 20px;
 }
 
-.modalContent {
+.modalForm {
     display: flex;
     flex-direction: column;
-    text-align: center;
+    width: 100%;
+    align-items: center;
 }
 
 .modalForm input {
-    margin: 16px;
-    width: 100%;
+    margin: 8px;
+    width: 90%;
 }
 
 .modalForm button {
-    margin: 16px;
-    width: 100%;
+    margin: 8px;
+    width: 90%;
 }
 
 .modalForm .modalError {
-    margin: 16px;
     color: red;
     text-align: left;
 }
