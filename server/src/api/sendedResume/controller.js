@@ -1,5 +1,8 @@
+import Company from "../company/model.js";
 import ApiError from "../exception.js";
 import { decodeToken } from "../jwt/service.js";
+import sendMail from "../mailer/mailer.js";
+import Trainee from "../trainee/model.js";
 import SendedResume from "./model.js";
 
 const controller = {
@@ -57,24 +60,32 @@ const controller = {
     },
     accept: async (req, res) => {
         const data = req.body;
-        await SendedResume.update(
-            {
-                status: true,
-            },
-            {
-                where: {
-                    resumeId: data.resumeId,
-                    companyId: data.companyId,
+        try {
+            await SendedResume.update(
+                {
+                    status: true,
                 },
-            }
-        )
-            .then((response) => {
-                return res.status(200).json({ message: "Резюме принято" });
-            })
-            .catch((error) => {
-                error = ApiError.InternalServerError(error.stack);
-                return res.status(error.status).json(error.data);
-            });
+                {
+                    where: {
+                        resumeId: data.resumeId,
+                        companyId: data.companyId,
+                    },
+                }
+            );
+            const trainee = await Trainee.findByPk(data.resumeId);
+            const company = await Company.findByPk(data.companyId);
+
+            sendMail(
+                trainee.email,
+                "Ваше резюме было принято!",
+                `Компания ${company.companyName} приняла ваше резюме!\nТеперь вы можете связаться с компанией по телефону: "${company.phone}" и обсудить условия прохождения практики`
+            );
+
+            return res.status(200).json({ message: "Резюме принято" });
+        } catch (error) {
+            error = ApiError.InternalServerError(error.stack);
+            return res.status(error.status).json(error.data);
+        }
     },
     decline: async (req, res) => {
         const resumeId = req.query.resumeId;
