@@ -2,8 +2,20 @@ import ApiError from "../exception.js";
 import SendedResume from "./model.js";
 
 const controller = {
-    getAll: async (req, res) => {
-        await SendedResume.findAll()
+    getByResume: async (req, res) => {
+        const resumeId = req.query.resumeId;
+        await SendedResume.findAll({ where: { resumeId: resumeId } })
+            .then((response) => {
+                return res.status(200).json(response);
+            })
+            .catch((error) => {
+                error = ApiError.InternalServerError(error.stack);
+                return res.status(error.status).json(error.data);
+            });
+    },
+    getByCompany: async (req, res) => {
+        const companyId = req.query.companyId;
+        await SendedResume.findAll({ where: { companyId: companyId } })
             .then((response) => {
                 return res.status(200).json(response);
             })

@@ -7,7 +7,7 @@ const Dashboard = () => {
 
     return (
         <div className="post">
-            Dashboard in progress
+            <h1>Полученные резюме</h1>
         </div>
     );
 };

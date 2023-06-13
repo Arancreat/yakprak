@@ -1,8 +1,32 @@
 import api from "./instance";
 
-export const ApiGetAllSendedResumes = async () => {
+export const ApiGetSendedResumesByResumeId = async (resumeId) => {
     return api
-        .get("/sendedResume/all")
+        .get("/sendedResume/byResume", {
+            params: { resumeId: resumeId },
+        })
+        .then((response) => {
+            return response;
+        })
+        .catch((error) => {
+            if (error.response) {
+                if (error.response.status == 401) {
+                    return error.response.status;
+                }
+                return error.response.status;
+            } else if (error.request) {
+                return 503;
+            } else {
+                return 400;
+            }
+        });
+};
+
+export const ApiGetSendedResumesByCompanyId = async (companyId) => {
+    return api
+        .get("/sendedResume/byCompany", {
+            params: { companyId: companyId },
+        })
         .then((response) => {
             return response;
         })

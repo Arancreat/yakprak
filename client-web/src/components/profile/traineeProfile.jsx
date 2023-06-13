@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { ApiCurrentUserData } from "../../services/trainee";
 import TraineeProfileCard from "./traineeProfileCard";
 import TraineeProfileCardSettings from "./traineeProfileCardSettings";
+import TraineeSendedResumes from "./traineeSendedResumes";
 
 const TraineeProfileComponent = () => {
     const [editMode, setEditMode] = useState(false);
@@ -38,6 +39,11 @@ const TraineeProfileComponent = () => {
                     toggleEdit={() => setEditMode(!editMode)}
                 />
             )}
+
+            <div className="post">
+                <h2> Отправленные резюме </h2>
+                <TraineeSendedResumes currentUser={currentUser.data} />
+            </div>
         </div>
     );
 };
