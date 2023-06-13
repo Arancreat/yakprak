@@ -40,11 +40,18 @@ const Dashboard = () => {
                 <h1>Полученные резюме</h1>
                 {receivedResumes?.data.map((receivedResume, i) => (
                     <div className="receivedResumeRow" key={i}>
-                        Создано:{" "}
-                        {new Date(receivedResume.createdAt).toLocaleString(
-                            "ru",
-                            dateOptions
-                        )}
+                        <div>
+                            Создано:{" "}
+                            {new Date(receivedResume.createdAt).toLocaleString(
+                                "ru",
+                                dateOptions
+                            )}
+                        </div>
+                        <div>
+                            Статус:{" "}
+                            {receivedResume.status ? "Принят" : "Ожидается"}
+                        </div>
+
                         <button
                             className="btn"
                             onClick={(e) => {
@@ -52,7 +59,9 @@ const Dashboard = () => {
                                 setCompanyId(receivedResume.companyId);
                                 setOpenResumeModal(true);
                             }}
-                        >Открыть резюме</button>
+                        >
+                            Открыть резюме
+                        </button>
                     </div>
                 ))}
             </div>
