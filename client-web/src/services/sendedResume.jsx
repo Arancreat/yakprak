@@ -22,11 +22,9 @@ export const ApiGetSendedResumesByResumeId = async (resumeId) => {
         });
 };
 
-export const ApiGetSendedResumesByCompanyId = async (companyId) => {
+export const ApiGetSendedResumesByJwt = async () => {
     return api
-        .get("/sendedResume/byCompany", {
-            params: { companyId: companyId },
-        })
+        .get("/sendedResume/byJwt")
         .then((response) => {
             return response;
         })

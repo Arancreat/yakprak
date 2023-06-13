@@ -1,0 +1,10 @@
+.receivedResumeRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: solid 2px;
+    padding-bottom: 16px;
+    padding-top: 16px;
+    border-color: gainsboro;
+}

@@ -42,7 +42,7 @@ const TraineeProfileComponent = () => {
 
             <div className="post">
                 <h2> Отправленные резюме </h2>
-                <TraineeSendedResumes currentUser={currentUser.data} />
+                <TraineeSendedResumes />
             </div>
         </div>
     );
