@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import CompanyMockList from "../components/home/companyList/companyMockList";
 import CompanyList from "../components/home/companyList";
 import Dashboard from "../components/home/dashboard";
 import Landing from "../components/home/landing";
